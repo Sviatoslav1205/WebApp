@@ -1,8 +1,11 @@
 require('dotenv').config()
-console.log(process.env)
+require('./bot')(process.env.BOT_TOKEN)
+
 const express = require('express');
+
 const app = express();
-const port = process.env.PORT || 2000;
+
+const PORT = process.env.PORT || 2000;
 
 // app.use(function(req, res, next) {
 //     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -14,10 +17,6 @@ const port = process.env.PORT || 2000;
 
 // require('./routes')(app);
 
-app.get("/", (req, res) => {
-  res.json({f: "ff"});
-})
-
-app.listen(port, () => {
-    console.log('Express server working on port: ', port);
+app.listen(PORT, () => {
+    console.log('Express server working on port: ', PORT);
 });
