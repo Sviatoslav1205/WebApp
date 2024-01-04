@@ -7,8 +7,8 @@ import fs from 'fs'
 export default defineConfig({
   server: {
     https: {
-      key: fs.readFileSync('.ssl_cert/key.pem'),
-      cert: fs.readFileSync('.ssl_cert/cert.pem'),
+      key: fs.readFileSync('../.ssl_cert/key.pem'),
+      cert: fs.readFileSync('../.ssl_cert/cert.pem'),
     },
   },
 
