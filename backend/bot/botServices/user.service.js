@@ -6,7 +6,7 @@ const addUser = (userId) => {
     if (error) {
       console.log(error )
     }
-    console.log(result)
+    // console.log(result)
   })
 } 
 

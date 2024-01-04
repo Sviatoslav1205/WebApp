@@ -1,50 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.scss'
+import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
+import { useEffect, useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+import BirthDateSelect from './components/BirthDateSelect/BirthDateSelect'
 
-  let btn: HTMLElement | null = document.getElementById("btn");
-  btn?.addEventListener("click", ()=>{
-  btn?.blur(); // removes the focus
-  
-})
-let btn2: HTMLElement | null = document.getElementById("btn2");
-  btn2?.addEventListener("click", ()=>{
-  btn2?.blur(); // removes the focus
-  })
+const tg: WebApp = Telegram.WebApp
 
+const App = () => {
+  useEffect(() => {
+    tg.ready()
+  }, [])
+
+  tg.expand()
+  tg.setHeaderColor("secondary_bg_color")
+  tg.setBackgroundColor("secondary_bg_color")
+  // tg.sendData(JSON.stringify({
+  //   userId: 1,
+  //   birthDate: '2002-10-14'
+  // }))
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>{count}</p>
-        <button id="btn" onClick={() => setCount((count) => count + 1)}>
-          +
-        </button>
-        <button id="btn2" onClick={() => setCount((count) => count - 1)}>
-          -
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      <Router>
+        <Routes>
+          {/* <Route path='/' element={}/> */}
+          <Route path='/birh-date-select/:userId' element={<BirthDateSelect tg={tg}/>}/>
+          {/* <Route path='/about_us' element={<AboutUsPage />}/> */}
+          {/* <Route path='*' element={<Navigate to='/'/>}/> */}
+        </Routes>
+      </Router>
+      {/* <div className='f'>
+      <h1>RRR</h1>
+      <button onClick={() => tg.HapticFeedback.notificationOccurred("error")}>Click</button>
+    </div> */}
+    </div>
   )
+    
+  
 }
 
 export default App
