@@ -16,6 +16,7 @@ const BirthDateSelect = ({ tg }: BirthDateSelectProps) => {
   const sendData = (userId: number, date: Date): void => {
     date = new Date(date.getTime() - date.getTimezoneOffset()*60000)
     tg.sendData(JSON.stringify({
+      type: "birthDateSelect",
       userId: userId,
       birthDate: date
     }))

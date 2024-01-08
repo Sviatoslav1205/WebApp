@@ -25,7 +25,7 @@ const PORT = process.env.SERVER_PORT || 2000
 //     next();
 // });
 
-// require('./routes')(app);
+require('./routes')(app);
 
 https.createServer(options, app).listen(PORT, () => {
     console.log('Express server working on port: ', PORT)
