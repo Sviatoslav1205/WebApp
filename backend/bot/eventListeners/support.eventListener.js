@@ -1,7 +1,8 @@
 const support = require('../botServices/support.service')
+const { USER_COMMANDS } = require('../commands')
 const { resetInlineKeyboard } = require('../keyboards/support.keyboard')
 
-const mainSupportEventListener = async (bot, msg, userId, userMessage, supportAgent, supportAgentMessage) => {
+const createMainSupportEventListener = async (bot, msg, userId, userMessage, supportAgent, supportAgentMessage) => {
   let supportAgentId = supportAgent.supportAgentId
   let userName = msg.from.first_name
   
@@ -81,6 +82,11 @@ const createSupportCommandsListener = async (bot) => {
       await bot.sendMessage(userId, 'Ви розпочали робочий день. Користувачі можуть з вами звʼязатися.')
     } else if (msg.text === '/end_workday') {
       supportAgent.isAvailable = false
+      await bot.setMyCommands(USER_COMMANDS, {
+        scope: {
+          type: "chat",
+          chat_id: userId
+      }})
       await bot.sendMessage(userId, 'Ви завершили робочий день. Користувачі більше не зможуть з вами звʼязатися.')
       await bot.removeListener('message', supportCommandsListener)
     }
@@ -89,6 +95,6 @@ const createSupportCommandsListener = async (bot) => {
 }
 
 module.exports = {
-  mainSupportEventListener,
+  createMainSupportEventListener,
   createSupportCommandsListener
 }

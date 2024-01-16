@@ -3,11 +3,8 @@ const { pool } = require("../../db/db")
 let supportAgents = []
 
 const updateSupportAgentsFromDB = async () => {
-  return new Promise((resolve, reject) => {
-    pool.query("SELECT `user_id` FROM `Users` WHERE `role` = 'support'", (error, result) => {
-      if (error) {
-        console.log(error)
-      }
+  pool.query("SELECT `user_id` FROM `Users` WHERE `role` = 'support'")
+    .then(([result]) => {
       supportAgents = result.map(supportAgent => {
         return {
           supportAgentId: supportAgent.user_id,
@@ -16,9 +13,10 @@ const updateSupportAgentsFromDB = async () => {
           startMessageId: null
         }
       })
-      resolve()
     })
-  })
+    .catch(error => {
+      console.log(error)
+    })
 } 
 updateSupportAgentsFromDB()
 

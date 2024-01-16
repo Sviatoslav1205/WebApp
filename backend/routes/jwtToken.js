@@ -4,7 +4,7 @@ const userController = require('../controllers/userController')
 router.post('/', async (req, res) => {
   // console.log(req.baseUrl)
   const { userId } = req.body
-  const user = await userController.getUserByUserId(userId)
+  const user = await userController.getUserById(userId)
 
   console.log(user)
 
