@@ -67,28 +67,25 @@
 //   })
 // }
 
-const { pool } = require('../db/db')
-const commands = require('./commands')
-const helpHandler = require('./handlers/helpHandler')
+const { USER_COMMANDS } = require('./commands')
+const helpHandler = require('./commandHandlers/help.handler')
 // require('./bot_services/birth_check.service')
-const startHandler = require('./handlers/startHandler')
-const supportHandler = require('./handlers/supportHandler')
-const webAppDataHandler = require('./handlers/webAppDataHandler')
+const startHandler = require('./commandHandlers/start.handler')
+const supportHandler = require('./commandHandlers/support.handler')
+const webAppDataHandler = require('./eventListeners/webAppData.eventListener')
 
 module.exports = () => {
   const TelegramApi = require('node-telegram-bot-api')
   const BOT_TOKEN = process.env.BOT_TOKEN
   const bot = new TelegramApi(BOT_TOKEN, {polling: true})
 
-  
-
-  bot.setMyCommands(commands)
+  bot.setMyCommands(USER_COMMANDS)
 
   // bot.setChatMenuButton({
   //   menu_button: JSON.stringify({
   //     type: 'web_app',
   //     text: 'Сайт',
-  //     web_app: {url: 'https://google.com'}
+  //     web_app: {url: 'https://facebook.com'}
   //   })
   // })
 
@@ -104,7 +101,7 @@ module.exports = () => {
     } else if (text === '/help') {
       await helpHandler(bot, userId)
     } else if (text === '/support') {
-      await supportHandler(bot, userId)
+      await supportHandler(bot, msg, userId)
     }
     
   })

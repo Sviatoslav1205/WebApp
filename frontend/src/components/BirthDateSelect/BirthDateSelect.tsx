@@ -24,6 +24,9 @@ const BirthDateSelect = ({ tg }: BirthDateSelectProps) => {
 
   const [date, setDate] = useState<Date>()
 
+  console.log(localStorage.removeItem("test"))
+  // sessionStorage.setItem("sessionTest", "session")
+
   return (
     <div className="">
       <h1>Select Date</h1>
