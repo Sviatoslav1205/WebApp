@@ -1,14 +1,19 @@
 require('dotenv').config()
 require('./bot')()
-const {pool, endPool} = require('./db/db')
 
 const https = require('https')
 const fs = require('fs')
 const express = require('express')
+const cookieParser = require('cookie-parser')
+const router = require('./routes')
+const errorMiddleware = require('./middlewares/error.middleware')
 
 const app = express()
+app.use(cookieParser())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use('/api', router)
+app.use(errorMiddleware)
 
 const options = {
     key: fs.readFileSync('../.ssl_cert/key.pem'),
@@ -25,7 +30,7 @@ const PORT = process.env.SERVER_PORT || 2000
 //     next();
 // });
 
-require('./routes')(app);
+// require('./routes')(app)
 
 https.createServer(options, app).listen(PORT, () => {
     console.log('Express server working on port: ', PORT)

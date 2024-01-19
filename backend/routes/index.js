@@ -1,7 +1,8 @@
-const jwtToken = require('./jwtToken')
+const router = require('express').Router()
+const admin = require('./admin')
 const user = require('./user')
 
-module.exports = (app) => {
-  app.use('/jwtToken', jwtToken)
-  app.use('/user', user)
-}
+router.use('/admin', admin)
+router.use('/user', user)
+
+module.exports = router

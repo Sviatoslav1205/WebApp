@@ -24,8 +24,26 @@ const BirthDateSelect = ({ tg }: BirthDateSelectProps) => {
 
   const [date, setDate] = useState<Date>()
 
-  console.log(localStorage.removeItem("test"))
+  // console.log(localStorage.removeItem("test"))
+  // tg.onEvent()
+//   window.addEventListener("beforeunload", (ev) => 
+// {  
+//     ev.preventDefault()
+//     return ev.returnValue = 'Are you sure you want to close?'
+//   });
+
+// tg.enableClosingConfirmation()
+//   tg.onEvent('popupClosed', () => tg.sendData(JSON.stringify({
+//     type: "birthDateSt"
+//   })))
+//   tg.showAlert("ff")
+  // tg.close()
   // sessionStorage.setItem("sessionTest", "session")
+
+  // window.external.notify(JSON.stringify({eventType: eventType, eventData: eventData}));
+
+  // window.parent.postMessage(JSON.stringify({eventType: "web_app_close"}), "*");
+
 
   return (
     <div className="">

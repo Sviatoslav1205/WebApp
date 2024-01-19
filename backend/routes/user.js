@@ -1,8 +1,8 @@
+const userController = require('../controllers/user.controller')
 const router = require('express').Router()
 
-router.get('/', async (req, res) => {
-  console.log(req.baseUrl)
-  res.json({success: true})
-})
+router.post('/login', userController.login)
+router.post('/logout', userController.logout)
+router.get('/refresh-token', userController.refresh)
 
 module.exports = router
