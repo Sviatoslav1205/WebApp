@@ -47,7 +47,7 @@ const BirthDateSelect = ({ tg }: BirthDateSelectProps) => {
 
   return (
     <div className="">
-      <h1>Select Date test</h1>
+      <h1>Select Date second test </h1>
       <DatePicker 
         className={style.input}
         locale="uk" 
