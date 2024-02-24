@@ -1,42 +1,55 @@
 import './App.scss'
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
-import BirthDateSelect from './components/BirthDateSelect/BirthDateSelect'
+import BirthDateSelectPage from './pages/BirthDateSelectPage/BirthDateSelectPage'
+import LoginForm from './components/LoginForm/LoginForm';
+import { Context } from './main';
+import { observer } from 'mobx-react-lite';
+import LoginPage from './pages/LoginPage/LoginPage';
 
 const tg: WebApp = Telegram.WebApp
 
 const App = () => {
+  const { store } = useContext(Context)
   useEffect(() => {
     tg.ready()
+    if (tg.initDataUnsafe.user) {
+      store.setUserId(
+        tg.initDataUnsafe.user.id
+      )
+    }
+    
+    if (localStorage.getItem('accessToken')) {
+      store.checkAuth()
+    }
   }, [])
 
   tg.expand()
   tg.setHeaderColor("secondary_bg_color")
   tg.setBackgroundColor("secondary_bg_color")
-  // tg.sendData(JSON.stringify({
-  //   userId: 1,
-  //   birthDate: '2002-10-14'
-  // }))
+
+  if(store.isLoading) {
+    return (
+      <div>Завантаження...</div>
+    )
+  }
 
   return (
     <div className="App">
       <Router>
         <Routes>
-          {/* <Route path='/' element={}/> */}
-          <Route path='/birh-date-select/:userId' element={<BirthDateSelect tg={tg}/>}/>
+          {/* <Route path='/' element={<LoginForm />}/> */}
+          <Route path='/' element={<LoginPage />}/>
+          <Route path='/birh-date-select/:userId' element={<BirthDateSelectPage tg={tg}/>}/>
           {/* <Route path='/about_us' element={<AboutUsPage />}/> */}
           {/* <Route path='*' element={<Navigate to='/'/>}/> */}
         </Routes>
       </Router>
-      {/* <div className='f'>
-      <h1>RRR</h1>
-      <button onClick={() => tg.HapticFeedback.notificationOccurred("error")}>Click</button>
-    </div> */}
     </div>
   )
     
   
 }
 
-export default App
+export default observer(App)

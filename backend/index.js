@@ -5,11 +5,16 @@ const https = require('https')
 const fs = require('fs')
 const express = require('express')
 const cookieParser = require('cookie-parser')
+const cors = require('cors')
 const router = require('./routes')
 const errorMiddleware = require('./middlewares/error.middleware')
 
 const app = express()
 app.use(cookieParser())
+app.use(cors({
+    credentials: true,
+    origin: process.env.CLIENT_URL
+}))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/api', router)
