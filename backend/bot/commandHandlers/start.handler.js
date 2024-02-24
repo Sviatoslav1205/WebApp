@@ -27,8 +27,7 @@ module.exports = async (bot, msg, userId) => {
     await bot.sendMessage(msg.chat.id, `З поверненням, ${msg.chat.first_name}! ` +
     `Для того, щоб переглянути список команд, натисніть сюди: /help`, {
       "reply_markup": {
-        "resize_keyboard": true,
-        "keyboard": [["Звернутися до підтримки"]]
+        "remove_keyboard": true
       }
     })
   }

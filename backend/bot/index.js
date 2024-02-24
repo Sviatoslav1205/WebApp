@@ -11,13 +11,14 @@ module.exports = () => {
 
   bot.setMyCommands(USER_COMMANDS)
 
-  // bot.setChatMenuButton({
-  //   menu_button: JSON.stringify({
-  //     type: 'web_app',
-  //     text: 'Сайт',
-  //     web_app: {url: 'https://facebook.com'}
-  //   })
-  // })
+  bot.setChatMenuButton({
+    menu_button: JSON.stringify({
+      type: 'web_app',
+      text: 'Сайт',
+      // web_app: {url: 'https://192.0.0.2:5173'} // Телефон
+      web_app: {url: 'https://192.168.0.102:5173'} //Вайфай вдома
+    })
+  })
 
   bot.on('message', async (msg) => {
     if (msg.from.is_bot) return
