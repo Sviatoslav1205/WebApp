@@ -1,0 +1,31 @@
+@use '@/variables' as *;
+
+.container {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  .button {
+    padding: 5px;
+    height: 35px;
+    width: 60vw;
+    border-radius: 10px;
+    border: none;
+    transition: background-color .06s ease;
+    color: $main_font_color;
+    font-size: 16px;
+    font-weight: 600;
+  
+    cursor: pointer;
+    background-color: $red_button_bg_color;
+    &:hover {
+      background-color: $red_button_hover_bg_color;
+    }
+    &:active {
+      background-color: $red_button_active_bg_color;
+    }
+  }
+}

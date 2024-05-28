@@ -1,0 +1,60 @@
+// Main colors
+$main_font_color: #ffffff;
+$main_black_font_color: #000000;
+$main_bg_color: #1e1e1e;
+
+
+// Nav-bar colors
+$nav_bar_bg_color: rgba(#622b2b, .97);
+
+//Table colors
+$table_bg_color: #302f2f;
+$table_border_color: #000000;
+$table_header_color: #881414;
+$table_cell_color: #885d5d;
+$table_cell_border_color: #ffffff;
+
+//Modal colors
+$modal_bg_color: rgba(#474747, .65);
+$modal_box_bg_color: #dbdbdb;
+
+//Red button color
+$red_button_bg_color: #6C0000;
+$red_button_hover_bg_color: #7f0000;
+$red_button_active_bg_color: #8e0d0d;
+
+//Grey button color
+$grey_button_bg_color: #D0D0D0;
+$grey_button_hover_bg_color: #bbbbbb;
+$grey_button_active_bg_color: #a9a9a9;
+
+//Light red button color
+$light_red_button_bg_color: #933c3c;
+$light_red_button_hover_bg_color: #ac4c4c;
+$light_red_button_active_bg_color: #b66161;
+
+//Light green button color
+$light_green_button_bg_color: #3C936E;
+$light_green_button_hover_bg_color: #44a67c;
+$light_green_button_active_bg_color: #63a98a;
+
+//Close button color
+$close_button_bg_color: $modal_box_bg_color;
+$close_button_hover_bg_color: #b4b4b4;
+$close_button_hover_shadow_color: rgba(#5c5c5c, .95);
+$close_button_active_bg_color: #898989;
+
+$dark_red_color: #6b0000;
+$red_color: #6c0000;
+$login_btn_font_color: #aaaaaa;
+
+
+// :export {
+//   greyButtonBgColor: $grey_button_bg_color;
+//   greyButtonHoverBgColor: $grey_button_hover_bg_color;
+//   greyButtonActiveBgColor: $grey_button_active_bg_color;
+
+//   redButtonBgColor: $red_button_bg_color;
+//   redButtonHoverBgColor: $red_button_hover_bg_color;
+//   redButtonActiveBgColor: $red_button_active_bg_color;
+// }

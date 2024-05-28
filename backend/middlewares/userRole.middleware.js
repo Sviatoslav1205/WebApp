@@ -19,7 +19,7 @@ module.exports = (role) => {
         return next(ApiError.UnauthorizedError())
       }
 
-      if (userData.role !== role) {
+      if (role.length !== 0 && !role.includes(userData.role)) {
         return next(ApiError.HaveNotPermission())
       }
   

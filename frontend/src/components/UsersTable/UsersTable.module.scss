@@ -1,0 +1,39 @@
+@use '@/variables' as *;
+
+.table {
+  margin: 0px 15px 15px;
+  border-collapse: collapse;
+  border: 1px solid $table_border_color;
+  display: block;
+  background-color: $table_bg_color;
+  // width: 100vw;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 350px;
+  color: $main_font_color;
+}
+
+.tr {
+  th {
+    white-space: nowrap;
+    padding: 15px 15px;
+    background-color: $table_header_color;
+    border: 1px solid $table_cell_border_color;
+  }
+  
+  td {
+    // width: 100px;
+    padding: 7px 10px;
+    white-space: nowrap;
+    background-color: $table_cell_color;
+    border: 1px solid $table_cell_border_color;
+
+    &.operation {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

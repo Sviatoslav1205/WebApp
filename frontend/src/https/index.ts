@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { AuthResponse } from '../types/response/AuthResponse'
+import { AuthResponse } from '@/types/responses/AuthResponse'
 
 export const API_URL = 'https://192.168.0.102:8000/api' // село
+export const IMAGES_URL = 'https://192.168.0.102:8000/images'
 // export const API_URL = 'https://192.168.0.102:8000' // львів
 
 const $api = axios.create({
@@ -26,6 +27,8 @@ $api.interceptors.response.use((config) => {
     } catch (e) {
       console.log("Користувач не авторизований");
     }
+  } else {
+    return Promise.reject(error);
   }
 })
 
