@@ -1,0 +1,82 @@
+@use '@/variables' as *;
+
+.input {
+  min-height: 38px;
+  // width: 70%;
+  padding: 4px 10px;
+  font-size: 16px;
+  transition: box-shadow .1s ease;
+  border-radius: 4px;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  resize: none;
+
+  &.white {
+    color: #333333;
+    background-color: #fff;
+
+    &:focus {
+      // border: 1px solid #2684FF;
+      box-shadow: 0 0 0 2px #2684FF;
+    }
+  }
+
+  &.red {
+    color: #ffffff;
+    background-color: $red_color;
+      
+    &::placeholder {
+      color: #aaaaaa;
+    }
+    &:focus {
+      // border: 1px solid #d81b1b;
+      box-shadow: 0 0 0 2px #d81b1b;
+    }
+  }
+
+  &.border {
+    font-size: inherit;
+    border: 1px solid #cccccc;
+
+    &::placeholder {
+      color: #808080
+    }
+  }
+
+  &.incorrect {
+    border: 2px solid red;
+  }
+}
+
+.small {
+  width: 70vw;
+}
+
+.big {
+  width: 85vw;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: -15px;
+}
+
+.label {
+  color: #515151;
+  font-size: 12px;
+  position: absolute;
+  top: -15px;
+}

@@ -1,0 +1,25 @@
+@use '@/variables' as *;
+
+.container {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  // overflow: scroll;
+
+  .background {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;  
+    background-color: $modal_bg_color;
+  }
+  
+  .children_container {
+    position: relative;
+  }
+}
+
+
+
+
+

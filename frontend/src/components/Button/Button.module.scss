@@ -1,0 +1,67 @@
+@use '@/variables' as *;
+
+.button {
+  padding: 5px;
+  height: 35px;
+  width: 220px;
+  // border-radius: 15px;
+  // border: 1px solid $dark_red_color;
+  border: none;
+  transition: background-color .06s ease;
+  color: $main_font_color;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &.grey {
+    border-radius: 10px;
+    color: $main_black_font_color;
+    background-color: $grey_button_bg_color;
+    &:hover {
+      background-color: $grey_button_hover_bg_color;
+    }
+    &:active {
+      background-color: $grey_button_active_bg_color;
+    }
+  }
+
+  &.red {
+    border-radius: 40px;
+    background-color: $red_button_bg_color;
+    &:hover {
+      background-color: $red_button_hover_bg_color;
+    }
+    &:active {
+      background-color: $red_button_active_bg_color;
+    }
+  }
+
+  &.green {
+    border-radius: 40px;
+    background-color: #006A3D;
+    &:hover {
+      background-color: #007a47;
+    }
+    &:active {
+      background-color: #108353;
+    }
+  }
+
+  &.small {
+    width: 160px;
+  }
+
+  &.big {
+    width: 220px;
+  }
+
+  &.rounded {
+    border-radius: 40px;
+  }
+
+  &.square {
+    width: 60vw;
+    border-radius: 10px;
+  }
+}

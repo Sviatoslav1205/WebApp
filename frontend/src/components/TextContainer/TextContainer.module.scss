@@ -1,0 +1,26 @@
+@use '@/variables' as *;
+
+.textContainer {
+  padding: 0;
+  height: 40px;
+  width: 100%;
+  border: none;
+  transition: background-color .06s ease;
+  color: $main_font_color;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.grey {
+    border-radius: 10px;
+    color: $main_black_font_color;
+    background-color: $grey_button_bg_color;
+  }
+
+  &.red {
+    border-radius: 5px;
+    background-color: $red_button_bg_color;
+  }
+}

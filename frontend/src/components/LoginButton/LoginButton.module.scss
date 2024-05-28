@@ -1,0 +1,25 @@
+@use '@/variables' as *;
+
+.container {
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  gap: 24px;
+
+  .btn {
+    cursor: pointer;
+    background-color: $main_bg_color;
+    border-radius: 10px;
+    border: 2px solid $dark_red_color;
+    box-sizing: border-box;
+    color: $login_btn_font_color;
+    font-size: 13px;
+    width: 100px;
+    height: 28px;
+
+    &:active {
+      filter: brightness(0.8);
+    }
+  }
+}

@@ -1,0 +1,11 @@
+@use '@/variables' as *;
+
+.inputContainer {
+  margin-bottom: 10px;
+}
+
+.buttonContainer, .inputContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

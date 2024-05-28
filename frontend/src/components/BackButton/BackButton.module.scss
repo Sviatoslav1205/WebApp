@@ -1,0 +1,42 @@
+@use '@/variables' as *;
+
+.button {
+  padding: 0;
+  height: 40px;
+  width: 40px;
+  border: none;
+  transition: background-color .06s ease;
+  // color: $main_font_color;
+  // font-size: 16px;
+  // font-weight: 600;
+
+  cursor: pointer;
+
+  &.grey {
+    border-radius: 10px;
+    color: $main_black_font_color;
+    background-color: $grey_button_bg_color;
+    &:hover {
+      background-color: $grey_button_hover_bg_color;
+    }
+    &:active {
+      background-color: $grey_button_active_bg_color;
+    }
+  }
+
+  &.red {
+    border-radius: 5px;
+    background-color: $red_button_bg_color;
+    &:hover {
+      background-color: $red_button_hover_bg_color;
+    }
+    &:active {
+      background-color: $red_button_active_bg_color;
+    }
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+}

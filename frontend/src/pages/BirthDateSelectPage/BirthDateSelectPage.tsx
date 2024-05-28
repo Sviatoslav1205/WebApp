@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import DatePicker, { registerLocale } from "react-datepicker"
 import uk from 'date-fns/locale/uk';
@@ -9,7 +9,7 @@ interface BirthDateSelectProps {
   tg: WebApp
 }
 
-const BirthDateSelect = ({ tg }: BirthDateSelectProps) => {
+const BirthDateSelect: FC<BirthDateSelectProps> = ({ tg }) => {
   registerLocale('uk', uk)
   const {userId} = useParams()
   

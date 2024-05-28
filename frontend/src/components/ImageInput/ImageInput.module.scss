@@ -1,0 +1,101 @@
+@use '@/variables' as *;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  // gap: 20px;
+  padding: 4px;
+  font-size: 14px;
+  transition: box-shadow .1s ease;
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  box-sizing: border-box;
+  position: relative;
+  
+  &:focus{
+    box-shadow: 0 0 0 2px #d81b1b;
+  }
+
+  &.small {
+    width: 70%;
+  }
+
+  &.big {
+    width: 85%;
+  }
+
+  &.huge {
+    width: 85vw;
+    &:focus{
+      box-shadow: 0 0 0 2px #2684FF;
+    }
+  }
+
+  &.incorrect {
+    border: 2px solid red;
+  }
+
+  .errorMessage {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: -17px;
+    left: -2px;
+  }
+
+  &.white {
+    color: #333333;
+    background-color: #fff;
+  }
+
+  &.red {
+    color: #ffffff;
+    background-color: $red_color;
+  }
+
+  .image {
+    background-color: #CCCCCC;
+    width: 125px;
+    height: 125px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    border: 3px solid black;
+    object-fit: contain;
+  }
+  
+  .block {
+    // padding-left: 20px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    margin-left: 20px;
+
+    .fileName {
+      margin: 10px 0 10px 0;
+    }
+
+    .buttonsContainer {
+      width: 100%;
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      gap: 10px;
+
+
+      .button {
+        background-color: #D9D9D9;
+        border-radius: 7px;
+        border: 2px solid black;
+        font-size: 14px;
+        height: 25px;
+        line-height: 50%;
+        width: 150px;
+      }
+    }
+  }
+}
+

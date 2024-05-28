@@ -1,0 +1,30 @@
+@use '@/variables' as *;
+
+.h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: $main_font_color;
+  font-size: 20px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-direction: column;
+
+  .buttonsContainer {
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    // gap: 10px;
+  }
+}
+
+.errorMessage {
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: -40%;
+}

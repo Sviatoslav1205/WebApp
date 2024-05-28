@@ -1,0 +1,44 @@
+@use '@/variables' as *;
+
+
+.base {
+  position: absolute;
+  top: 40vh;
+  transition: top .3s ease;
+  height: 100vh;
+  &.open {
+    top: 0;
+  }
+  &.closed {
+    transition: top .3s ease;
+    top: 100vh;
+  }
+
+  .container {
+    overflow: scroll;
+    box-sizing: border-box;
+    padding: 20px;
+    min-height: 60vh;
+    max-height: 100vh;
+    width: 100vw;
+    background-color: $modal_box_bg_color;
+    position: absolute;
+    left: 50vw;
+    transform: translate(-50%, 0%);
+    border-radius: 15px 15px 0 0;
+    box-shadow: 0px 0px 20px #212121;
+    transition: top .5s ease;
+    top: 40vh;
+    transition: background-color .06s ease, top .5s ease, height .5s ease;
+  
+    &.fullscreen {
+      top: 0;
+      height: 100vh;
+    }
+  
+    &.partscreen {
+      top: 40vh;
+      height: 60vh;
+    } 
+  }
+}

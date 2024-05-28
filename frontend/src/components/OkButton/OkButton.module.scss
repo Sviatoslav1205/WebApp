@@ -1,0 +1,23 @@
+@use '@/variables' as *;
+
+.button {
+  padding: 5px;
+  height: 35px;
+  width: 150px;
+  border-radius: 15px;
+  border: 1px solid $dark_red_color;
+  background-color: $light_red_button_bg_color;
+  transition: background-color .06s ease;
+  color: $main_font_color;
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: $light_red_button_hover_bg_color;
+  }
+  &:active {
+    background-color: $light_red_button_active_bg_color;
+  }
+}
