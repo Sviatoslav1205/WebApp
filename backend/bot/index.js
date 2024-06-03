@@ -4,10 +4,11 @@ const startHandler = require('./commandHandlers/start.handler')
 const supportHandler = require('./commandHandlers/support.handler')
 const webAppDataHandler = require('./eventListeners/webAppData.eventListener')
 
-module.exports = () => {
-  const TelegramApi = require('node-telegram-bot-api')
-  const BOT_TOKEN = process.env.BOT_TOKEN
-  const bot = new TelegramApi(BOT_TOKEN, {polling: true})
+const TelegramApi = require('node-telegram-bot-api')
+const BOT_TOKEN = process.env.BOT_TOKEN
+const bot = new TelegramApi(BOT_TOKEN, {polling: true})
+
+const startBot = () => {
 
   bot.setMyCommands(USER_COMMANDS)
 
@@ -38,4 +39,9 @@ module.exports = () => {
   bot.on('web_app_data', async (data) => {
     await webAppDataHandler(bot, data)
   })
+}
+
+module.exports = {
+  startBot,
+  bot
 }

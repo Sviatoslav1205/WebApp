@@ -37,14 +37,14 @@ const UsersPage: FC = () => {
 
   return (
     <>
-      <ModalContainer showModal={error.showError} onClose={() => setError({ showError:false, message:"" })}>
+      <ModalContainer showModal={error.showError} blockScroll={true} onClose={() => setError({ showError:false, message:"" })}>
         <ErrorModal message={error.message} onOk={() => setError({ showError:false, message:"" })}/>
       </ModalContainer>
-      <ModalContainer showModal={showEditModal} onClose={() => setShowEditModal(false)}>
+      <ModalContainer showModal={showEditModal} blockScroll={true} onClose={() => setShowEditModal(false)}>
         <ChangeRoleModal adminId={store.userId} user={selectedUser} onClose={() => setShowEditModal(false)}/>
       </ModalContainer>
 
-      <ModalContainer showModal={showConfirmationModal} onClose={() => setShowConfirmationModal(false)}>
+      <ModalContainer showModal={showConfirmationModal} blockScroll={true} onClose={() => setShowConfirmationModal(false)}>
         <ConfirmationModal onYes={async () => {
           await AdminService.generatePassword(selectedUser.userId).then(response => {
             setShowPassword({message:response.data.message, password: response.data.password, showModal: true})
@@ -53,7 +53,7 @@ const UsersPage: FC = () => {
         }} onNo={() => setShowConfirmationModal(false)}/>
       </ModalContainer>
 
-      <ModalContainer showModal={showPassword.showModal} onClose={() => setShowPassword({ message:'', password: '', showModal: false })}>
+      <ModalContainer showModal={showPassword.showModal} blockScroll={true} onClose={() => setShowPassword({ message:'', password: '', showModal: false })}>
         <PasswordModal generatedPassword={showPassword} onOk={() => setShowPassword({ message:'', password: '', showModal: false })}/>
       </ModalContainer>
 

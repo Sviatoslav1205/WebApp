@@ -19,17 +19,12 @@ interface ProductEditFormProps {
   rerenderProductList: () => void
   isFullscreenOpen: boolean
   onButtonClick: () => void
-  // confirmationModalData: {
-  //   show: boolean
-  //   text: string
-  //   onYesCallback: () => void
-  //   onNoCallback: () => void
-  // }
   setConfirmationModalData: Dispatch<SetStateAction<{
     show: boolean
     text: string
     onYesCallback: () => void
     onNoCallback: () => void
+    blockScroll: boolean
   }>>
 }
 
@@ -58,17 +53,17 @@ const ProductEditForm: FC<ProductEditFormProps> = ({ product, rerenderProductLis
     if (image && image?.name !== product?.photo.split('/').pop()) {
       formData.append('photo', image)
       formData.append('oldPhotoPath', product?.photo.split('/').slice(-2).join('/') || '')
-      console.log(product?.photo)
-      console.log(formData.get('photo'))
-      console.log(formData.get('oldPhotoPath'))
+      // console.log(product?.photo)
+      // console.log(formData.get('photo'))
+      // console.log(formData.get('oldPhotoPath'))
     } else {
       formData.append('photo', editedProduct.photo)
     }
-    console.log(formData.get('photo'), editedProduct.photo)
+    // console.log(formData.get('photo'), editedProduct.photo)
     formData.append('price', editedProduct.price+'')
     formData.append('weight', editedProduct.weight+'')
     formData.append('description', editedProduct.description)
-    console.log([...formData.entries()])
+    // console.log([...formData.entries()])
   }
 
   const getImageByUrl = (url?: string) => {
@@ -192,7 +187,8 @@ const ProductEditForm: FC<ProductEditFormProps> = ({ product, rerenderProductLis
     show: false,
     text: '',
     onYesCallback: () => {},
-    onNoCallback: () => {}
+    onNoCallback: () => {},
+    blockScroll: false
   })
 
   useEffect(() => {
@@ -317,7 +313,8 @@ const ProductEditForm: FC<ProductEditFormProps> = ({ product, rerenderProductLis
               },
               onNoCallback: () => {
                 clearConfirmationModalData()
-              }
+              },
+              blockScroll: true
             })
             // changeEditedProduct('photo', editedProduct.photo ? (editedProduct.categoryId + '/' + editedProduct.photo) : null)
             // onButtonClick()

@@ -27,7 +27,7 @@ const MailingPage: FC = () => {
 
   return (
     <>
-      <ModalContainer showModal={showConfirmationModal} onClose={() => setShowConfirmationModal(false)}>
+      <ModalContainer showModal={showConfirmationModal} blockScroll={true} onClose={() => setShowConfirmationModal(false)}>
         <ConfirmationModal onYes={async () => {
           // await AdminService.generatePassword(selectedUser.userId).then(response => {
           //   setShowPassword({message:response.data.message, password: response.data.password, showModal: true})

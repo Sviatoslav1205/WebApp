@@ -7,7 +7,8 @@ interface TextInputProps {
   error?: CustomError
   label?: string
   theme: "red" | "white"
-  size: "small" | "big"
+  size: "small" | "big" | "relative"
+  isFocusEnabled?: boolean
   inputType: "singleLine" | "multiLine"
   maxLength?: number
   placeholder?: string | undefined
@@ -16,9 +17,11 @@ interface TextInputProps {
   onValueChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
-const TextInput: FC<TextInputProps> = ({ border, error, label, theme, size, inputType, maxLength, placeholder, value, inputMode, onValueChange }) => {
+const TextInput: FC<TextInputProps> = ({ border, error, label, theme, size, isFocusEnabled, inputType, maxLength, placeholder, value, inputMode, onValueChange }) => {
 
-  const className = `${styles.input} ${size === "big" ? styles.big : size === "small" ? styles.small : null}
+  const className = `${styles.input} 
+    ${size === "big" ? styles.big : size === "small" ? styles.small : size === "relative" ? styles.relative : null}
+    ${isFocusEnabled ? null : styles.disableFocus}
     ${theme === "red" ? styles.red : theme === "white" ? styles.white : null}
     ${border ? styles.border : null} ${error?.show ? styles.incorrect : null}`
 

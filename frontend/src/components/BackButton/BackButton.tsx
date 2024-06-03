@@ -6,10 +6,11 @@ interface BackButtonProps {
   theme: 'grey' | 'red'
   // size?: 'small' | 'big'
   style?: CSSProperties
+  iconStyle?: CSSProperties
   onButtonClick: () => void
 }
 
-const BackButton: FC<BackButtonProps> = ({ theme, style, onButtonClick }) => {
+const BackButton: FC<BackButtonProps> = ({ theme, style, iconStyle, onButtonClick }) => {
   return (
     <button 
       onClick={onButtonClick} 
@@ -17,7 +18,9 @@ const BackButton: FC<BackButtonProps> = ({ theme, style, onButtonClick }) => {
           ...style
         }}
       >
-        <img className={styles.icon} src={icon} alt="" />
+        <img className={styles.icon} src={icon} alt="" style={{ 
+          ...iconStyle
+        }}/>
       </button>
   )
 }

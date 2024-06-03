@@ -2,12 +2,12 @@ import { FC } from "react"
 import styles from "./ProductCard.module.scss"
 import { ProductData } from "@/types/ProductData"
 
-interface LoginButtonProps {
+interface ProductCardProps {
   product: ProductData
   onCardClick: () => void
 }
 
-const ProductCard: FC<LoginButtonProps> = ({ product, onCardClick }) => {
+const ProductCard: FC<ProductCardProps> = ({ product, onCardClick }) => {
   return (
     <div className={styles.container} onClick={onCardClick}>
       <img src={product.photo} alt="" className={styles.image}/>

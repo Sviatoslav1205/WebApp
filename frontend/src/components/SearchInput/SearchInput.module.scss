@@ -1,0 +1,9 @@
+@use '@/variables' as *;
+
+.searchInputContainer {
+  display: flex;
+  background-color: $red_color;
+  padding-right: 15px;
+  border-radius: 4px;
+  width: 65vw;
+}

@@ -34,8 +34,24 @@ const refresh = async (req, res, next) => {
   }
 }
 
+const createInvoice = async (req, res, next) => {
+  try {
+    let { title, description, payload, prices, photoUrl } = req.body
+    await userService.createInvoice(
+      title= "title", 
+      description= "description", 
+      payload= "payload", 
+      prices= [{label: "prices", amount: 2}], 
+      photoUrl= "photoUrl"
+    )
+  } catch (e) {
+    next(e)
+  }
+}
+
 module.exports = {
   login,
   logout,
-  refresh
+  refresh,
+  createInvoice
 }

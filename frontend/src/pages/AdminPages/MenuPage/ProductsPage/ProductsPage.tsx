@@ -29,11 +29,13 @@ const ProductsPage: FC<ProductsPageProps> = ({ back }) => {
     text: string
     onYesCallback: () => void
     onNoCallback: () => void
+    blockScroll: boolean
   }>({
     show: false,
     text: '',
     onYesCallback: () => {},
-    onNoCallback: () => {}
+    onNoCallback: () => {},
+    blockScroll: false
   })
 
   useEffect(() => {
@@ -44,18 +46,24 @@ const ProductsPage: FC<ProductsPageProps> = ({ back }) => {
     show: false,
     text: '',
     onYesCallback: () => {},
-    onNoCallback: () => {}
+    onNoCallback: () => {},
+    blockScroll: false
   })
+
+  // useEffect(() => {
+  //   document.body.style.overflow = modal.show || confirmationModalData.show ? 'hidden' : 'visible'
+  // }, [modal, confirmationModalData])
 
   return (
     <>
-      <ModalContainer showModal={modal.show} onClose={() => {
+    {/* {console.log('Modal show', modal.show)} */}
+      <ModalContainer showModal={modal.show} blockScroll={true} onClose={() => {
         setIsModalOpenAnimation(false)
         setTimeout(() => {
           setModal({type: null, show: false})
         }, 300)
       }}>
-        <SlideDownModal isFullscreenOpen={isFullscreenOpen} setIsFullscreenOpen={setIsFullscreenOpen} isModalOpenAnimation={isModalOpenAnimation} setIsModalOpenAnimation={setIsModalOpenAnimation}>
+        <SlideDownModal isFullscreenOpen={false} setIsFullscreenOpen={setIsFullscreenOpen} isModalOpenAnimation={isModalOpenAnimation} setIsModalOpenAnimation={setIsModalOpenAnimation}>
           {modal.type === 'changeName' ? 
             <CategoryEditForm 
               text={productStore.selectedCategory.category.name} 
@@ -72,7 +80,8 @@ const ProductsPage: FC<ProductsPageProps> = ({ back }) => {
         </SlideDownModal>
       </ModalContainer>
 
-      <ModalContainer showModal={confirmationModalData.show} onClose={clearConfirmationModalData} >
+      {/* <ModalContainer showModal={confirmationModalData.show} onClose={clearConfirmationModalData} blockScroll={confirmationModalData.blockScroll} > */}
+      <ModalContainer showModal={confirmationModalData.show} onClose={clearConfirmationModalData} blockScroll={false} >
         <ConfirmationModal 
           text={confirmationModalData.text} 
           onYes={confirmationModalData.onYesCallback} 
@@ -112,7 +121,8 @@ const ProductsPage: FC<ProductsPageProps> = ({ back }) => {
           },
           onNoCallback: () => {
             clearConfirmationModalData()
-          }
+          },
+          blockScroll: true
         })} />
       </div>
     </>

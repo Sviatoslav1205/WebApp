@@ -49,6 +49,12 @@
   &.incorrect {
     border: 2px solid red;
   }
+
+  &.disableFocus {
+    &:focus {
+      box-shadow: none;
+    }
+  }
 }
 
 .small {
@@ -57,6 +63,10 @@
 
 .big {
   width: 85vw;
+}
+
+.relative {
+  width: 100%;
 }
 
 .container {

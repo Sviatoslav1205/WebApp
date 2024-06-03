@@ -2,6 +2,7 @@ import { FC, ReactElement, useState, UIEvent, useEffect, SetStateAction, Dispatc
 import styles from "./SlideDownModal.module.scss"
 
 interface SlideDownModalProps {
+  isProductModal?: boolean
   isFullscreenOpen?: boolean
   setIsFullscreenOpen?: Dispatch<SetStateAction<boolean>>
   isModalOpenAnimation: boolean
@@ -9,9 +10,13 @@ interface SlideDownModalProps {
   children: ReactElement | null
 }
 
-const SlideDownModal: FC<SlideDownModalProps> = ({ isFullscreenOpen, setIsFullscreenOpen, isModalOpenAnimation, setIsModalOpenAnimation, children }) => {
+const SlideDownModal: FC<SlideDownModalProps> = ({ isProductModal, isFullscreenOpen, setIsFullscreenOpen, isModalOpenAnimation, setIsModalOpenAnimation, children }) => {
   const [lastScrollTop, setLastScrollTop] = useState<number>(0)
   const [isFullscreen, setIsFullscreen] = useState<boolean>(isFullscreenOpen || false)
+
+  useEffect(() => {
+    setIsFullscreen(isFullscreenOpen || false)
+  }, [isFullscreenOpen])
   
   const isScrollingDown = (scrollTop: number) => {
     let goingDown = false
@@ -24,11 +29,16 @@ const SlideDownModal: FC<SlideDownModalProps> = ({ isFullscreenOpen, setIsFullsc
 
   const handleScroll = (e: UIEvent<HTMLDivElement>) => {
     const target = (e.target as HTMLDivElement)
-    const scrollTop = target.scrollTop
-    if (isScrollingDown(scrollTop) && scrollTop > 20) {
-      setIsFullscreen(true)
-    } else if (!isScrollingDown(scrollTop) && scrollTop === 0) {
-      setIsFullscreen(false)
+    const scrollHeight = target.scrollHeight
+    const windowHeight = window.innerHeight
+    // console.log(scrollHeight, window.innerHeight)
+    if (scrollHeight > windowHeight) {
+      const scrollTop = target.scrollTop
+      if (isScrollingDown(scrollTop) && scrollTop > 20) {
+        setIsFullscreen(true)
+      } else if (!isScrollingDown(scrollTop) && scrollTop === 0) {
+        setIsFullscreen(false)
+      }
     }
   }
 
@@ -51,7 +61,7 @@ const SlideDownModal: FC<SlideDownModalProps> = ({ isFullscreenOpen, setIsFullsc
 
   return (
     <div className={`${styles.base} ${isModalOpenAnimation ? styles.open : styles.closed}`}>
-      <div className={`${styles.container} ${isFullscreen ? styles.fullscreen : styles.partscreen}`} onScroll={handleScroll} id="slideDownScrollPanel">
+      <div className={`${styles.container} ${isFullscreen ? styles.fullscreen : isProductModal ? styles.productModal : styles.partscreen}`} onScroll={handleScroll} id="slideDownScrollPanel">
         {children}
       </div>
     </div>

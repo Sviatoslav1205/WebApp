@@ -39,7 +39,11 @@ export default class ProductStore {
   }
 
   getProductsByCategory = (categoryId: number = this.selectedCategory.category.id) => {
-    return this.products.filter(product => product.categoryId === categoryId)
+    if (categoryId === -1) {
+      return this.products
+    } else {
+      return this.products.filter(product => product.categoryId === categoryId)
+    }
   }
 }
 

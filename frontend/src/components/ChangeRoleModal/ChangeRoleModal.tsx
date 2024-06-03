@@ -51,7 +51,7 @@ const ChangeRoleModal: FC<ChangeRoleModalProps> = ({ adminId, user, onClose }) =
 
   return (
     <>
-      <ModalContainer showModal={showConfirmationModal} onClose={() => setShowConfirmationModal(false)}>
+      <ModalContainer showModal={showConfirmationModal} blockScroll={true} onClose={() => setShowConfirmationModal(false)}>
         <ConfirmationModal onYes={async () => {
           // console.log("yes")
           await AdminService.changeUserRole(adminId, user.userId, selectedRole)

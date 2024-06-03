@@ -5,10 +5,14 @@ interface ModalContainerProps {
   showModal: boolean
   onClose: () => void
   children: ReactElement
+  blockScroll: boolean
 }
 
-const ModalContainer: FC<ModalContainerProps> = ({ showModal, onClose, children }) => {
-  document.body.style.overflow = showModal ? 'hidden' : 'visible'
+const ModalContainer: FC<ModalContainerProps> = ({ showModal, onClose, children, blockScroll }) => {
+  if (blockScroll) {
+    document.body.style.overflow = showModal ? 'hidden' : 'visible'
+  }
+  // document.body.style.overflow = showModal ? 'hidden' : 'visible'
 
   return showModal ? (
     <div className={styles.container}>

@@ -1,11 +1,46 @@
 @import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
 
+.buttonContainer {
+  position: fixed;
+  top: 10px;
+  left: 25px;
+  z-index: 1000;
+  height: 50px;
+  width: 50px;
+  .burgerButton {
+    background: none;
+    border: none;
+    z-index: 1000;
+    position: sticky;
+    cursor: pointer;
+    // transition: rotate 1s ease;
+    transition: transform 1s ease;
+    // -webkit-transition: -webkit-transform 1s ease;
+    // -moz-transition: -moz-transform 1s ease;
+    &.clicked {
+      // rotate: 90deg;
+      transform: rotate(90deg);
+      // -webkit-transform: rotate(90deg);
+      // -moz-transform: rotate(90deg);
+      transition: transform 1s ease;
+      // transition: rotate 1s ease;
+      // -webkit-transition: -webkit-transform 1s ease;
+      // -moz-transition: -moz-transform 1s ease;
+    }
+  }
+}
+
 .header {
+  background-color: #1e1e1e;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   width: 100vw;
   display: flex;
   justify-content: center;
-  margin-top: 15px;
-  margin-bottom: 40px;
+  align-items: center;
+  margin-bottom: 15px;
+  height: 70px;
 
   .logo {
     margin: 0;
@@ -15,29 +50,40 @@
     font-size: 46px;
     font-family: "Metal Mania";
   }
+}
 
-  .burger_button {
+.basketButtonContainer {
+  position: fixed;
+  top: 10px;
+  right: 25px;
+  z-index: 998;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+
+  .basketButton {
     background: none;
     border: none;
     z-index: 1000;
-    position: absolute;
+    position: sticky;
     cursor: pointer;
-    // margin-top: -17.5px;
-
-    top: 15px;
-    left: 25px;
-    transition: transform 1s ease;
-    
-    // -webkit-transition: 1s ease transform;
-    &.clicked {
-      transform: rotate(90deg);
-      
-      // -webkit-transform: rotate(90deg);
-
-      transition: transform 1s;
-      // -webkit-transition: -webkit-transform 1s;
-    }
   }
+  // width: 50px;
+  // .burger_button {
+  //   background: none;
+  //   border: none;
+  //   z-index: 1000;
+  //   position: sticky;
+  //   cursor: pointer;
+  //   transition: transform 1s ease;
+  //   &.clicked {
+  //     transform: rotate(90deg);
+  //     transition: transform 1s;
+  //   }
+  // }
 }
 
 @keyframes rotate {
