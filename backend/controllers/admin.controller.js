@@ -1,5 +1,5 @@
 const ApiError = require('../exceptions/api.error')
-const adminService = require('../services/admin.sevice')
+const adminService = require('../services/admin.service')
 
 const getUsers = async (req, res, next) => {
   try {

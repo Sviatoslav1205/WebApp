@@ -3,6 +3,7 @@ import { AxiosResponse } from "axios"
 import { GetCategoriesResponse } from "@/types/responses/GetCategoriesResponse"
 import { GetProductsResponse } from "@/types/responses/GetProductsResponse"
 import { ProductData } from "@/types/ProductData"
+import { CreateInvoiceLinkResponse } from "@/types/responses/CreateInvoiceLinkResponse"
 
 const getCategories = async (): Promise<AxiosResponse<GetCategoriesResponse>> => {
   return await $api.get<GetCategoriesResponse>('/menu/categories')
@@ -16,13 +17,18 @@ const getProductsByCategory = async (categoryId: number): Promise<AxiosResponse<
   return await $api.get<GetProductsResponse>(`/menu/get-products-by-category?categoryId=${categoryId}`)
 }
 
-const pay = async (productsArray: {
+const createInvoiceLink = async (orderDate: string, productsArray: {
   product: ProductData
   count: number
-}[]): Promise<AxiosResponse> => {
-  return await $api.post(`/user/pay`, {
-    title: "productsArray",
-    
+}[]): Promise<AxiosResponse<CreateInvoiceLinkResponse>> => {
+  return await $api.post<CreateInvoiceLinkResponse>(`/user/create-invoice-link`, {
+    prices: productsArray.map(element => {
+      return {
+        label: element.product.name.length > 19 ? element.product.name.slice(0, 19)+'...' : element.product.name,
+        amount: element.product.price * element.count * 100
+      }
+    }),
+    payload: orderDate
   })
 }
 
@@ -30,5 +36,5 @@ export default {
   getCategories,
   getProducts,
   getProductsByCategory,
-  pay
+  createInvoiceLink
 }

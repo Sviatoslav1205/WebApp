@@ -1,7 +1,6 @@
 const { pool } = require("../../db/db")
 
 const addUser = async (userId) => {
-  // console.log(userId)
   pool.query("INSERT IGNORE INTO `Users` (`user_id`) VALUES (?)", [userId])
     .catch(error => {
       console.log(error)
@@ -30,24 +29,8 @@ const addBirthDate = async (userId, date) => {
     })
 }
 
-// const getRole = async (userId) => {
-//   return new Promise((resolve, reject) => {
-//     pool.query("SELECT `role` FROM `Users` WHERE `user_id` = ?", userId, (error, result) => {
-//       if (error) {
-//         console.log(error)
-//       }
-//       resolve(result[0].role)
-//     })
-//   })
-// }
-
-// module.exports = pool.query("SELECT * FROM `Users` WHERE `date_of_birth` IS NULL", (error, result) => {
-//   console.log(result)
-// })
-
 module.exports = {
   addUser,
   checkBirthDate,
-  addBirthDate,
-  // getRole
+  addBirthDate
 }

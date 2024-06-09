@@ -284,8 +284,8 @@ const ProductEditForm: FC<ProductEditFormProps> = ({ product, rerenderProductLis
           changeEditedProduct('photo', null)
         }} 
       />
-      <TextInput error={errors[3]} label="Ціна" placeholder="Ціна" theme='white' size='big' inputType='singleLine' inputMode='numeric' value={editedProduct.price || ''} onValueChange={(e) => {changeEditedProduct('price', replaceSymbols(e.target.value))}} />
-      <TextInput error={errors[4]} label="Вага" placeholder="Вага" theme='white' size='big' inputType='singleLine' value={editedProduct.weight || ''} onValueChange={(e) => changeEditedProduct('weight', replaceSymbols(e.target.value))} />
+      <TextInput error={errors[3]} label="Ціна, грн" placeholder="Ціна" theme='white' size='big' inputType='singleLine' inputMode='numeric' value={editedProduct.price || ''} onValueChange={(e) => {changeEditedProduct('price', replaceSymbols(e.target.value))}} />
+      <TextInput error={errors[4]} label="Вага, г" placeholder="Вага" theme='white' size='big' inputType='singleLine' value={editedProduct.weight || ''} onValueChange={(e) => changeEditedProduct('weight', replaceSymbols(e.target.value))} />
       <TextInput error={errors[5]} label="Опис" placeholder="Опис..." theme='white' size='big' inputType='multiLine' value={editedProduct.description} onValueChange={(e) => changeEditedProduct('description', e.target.value)} />
       
       {

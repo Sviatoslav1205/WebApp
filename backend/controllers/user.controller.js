@@ -36,14 +36,11 @@ const refresh = async (req, res, next) => {
 
 const createInvoice = async (req, res, next) => {
   try {
-    let { title, description, payload, prices, photoUrl } = req.body
-    await userService.createInvoice(
-      title= "title", 
-      description= "description", 
-      payload= "payload", 
-      prices= [{label: "prices", amount: 2}], 
-      photoUrl= "photoUrl"
-    )
+    const { prices, payload } = req.body
+    // console.log(payload)
+    const invoiceUrl = await userService.createInvoice(prices, payload)
+    // console.log(invoiceUrl)
+    return res.json({invoiceUrl: invoiceUrl})
   } catch (e) {
     next(e)
   }

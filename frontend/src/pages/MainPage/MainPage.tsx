@@ -48,7 +48,7 @@ const MainPage: FC = () => {
     }
 
     const isScrolledToRight = element.scrollWidth < element.clientWidth + element.scrollLeft + 5
-    const isScrolledToLeft = isScrolledToRight ? false : element.scrollLeft <= 5
+    const isScrolledToLeft = (element.scrollWidth < element.clientWidth + element.scrollLeft) ? false : element.scrollLeft <= 5
 
     element.classList.toggle(styles.isRightOverflowing, !isScrolledToRight)
     element.classList.toggle(styles.isLeftOverflowing, !isScrolledToLeft)
@@ -58,9 +58,10 @@ const MainPage: FC = () => {
     const fetchData = async () => {
       await productStore.fetchCategories()
       await productStore.fetchProducts()
+      setRerender(rerender+1)
     }
     fetchData()
-    setRerender(rerender+1)
+    
     setFade()
   }, [])
 
@@ -113,7 +114,10 @@ const MainPage: FC = () => {
 
       <div className={styles.searchContainer}>
         <img src={solohaImage} alt="" className={styles.solohaImage} />
-        <SearchInput value={searchValue} onValueChange={(e) => {setSearchValue(e.target.value)}} />
+        <SearchInput value={searchValue} onValueChange={(e) => {
+          setSearchValue(e.target.value)
+          setSelectedCategoryIndex(-1)
+        }} />
       </div>
       <div className={styles.categorySelectorContainer}>
         <div className={styles.categoryIndicatorsContainer}>
@@ -143,7 +147,17 @@ const MainPage: FC = () => {
         </ul>
       </div>
       <div className={styles.productsContainer}>
-        {productStore.getProductsByCategory(selectedCategory.id).map(product => {
+        {searchValue ? 
+        productStore.searchProducts(searchValue).map(product => {
+          return (
+            <ProductCard product={product} onCardClick={() => setSelectedProduct({
+              product: product,
+              showModal: true
+            })} key={product.id}/>
+            // <ProductCard product={product} onCardClick={() => {console.log(())}} key={product.id}/>
+          )
+        }) :
+        productStore.getProductsByCategory(selectedCategory.id).map(product => {
           return (
             <ProductCard product={product} onCardClick={() => setSelectedProduct({
               product: product,

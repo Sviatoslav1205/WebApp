@@ -15,7 +15,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ showNavBar, setShowNavBar }) => {
   const changeShowNavBar = () => setShowNavBar(!showNavBar)
-  const [showBasket, setShowBasket] = useState<boolean>(true)
+  const [showBasket, setShowBasket] = useState<boolean>(false)
   const [isFullscreenOpen, setIsFullscreenOpen] = useState<boolean>(false)
   const [isModalOpenAnimation, setIsModalOpenAnimation] = useState<boolean>(false)
   return (

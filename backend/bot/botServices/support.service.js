@@ -28,14 +28,8 @@ const getAvailableSupportAgents = async () => {
   return supportAgents.filter(supportAgent => supportAgent.isAvailable === true)
 }
 
-// const changeSupportStatus = async (supportUserId) => {
-//   let support = supports.find(support => support.supportUserId === supportUserId)
-//   support.isAvailable = !support.isAvailable
-// }
-
 const changeUserToSupport = async (supportAgentId, userId) => {
   let supportAgent = supportAgents.find(supportAgent => supportAgent.supportAgentId === supportAgentId)
-  // console.log(supportAgent)
   if (userId) {
     supportAgent.isAvailable = false
     supportAgent.userId = userId
@@ -108,24 +102,11 @@ const getMessageType = async (msg) => {
 }
 
 const sendMessage = async (bot, msg, supportAgent, fromUser) => {
-  // console.log(`Message from ${fromUser ? supportAgent.userId : supportAgent.supportAgentId}`)
-  // await bot.sendMessage(fromUser ? supportAgent.supportAgentId : supportAgent.userId, msg)
   let chatId = fromUser ? supportAgent.supportAgentId : supportAgent.userId
   let fromChatId = fromUser ? supportAgent.userId : supportAgent.supportAgentId
-  // if (fromUser) {
-  //   let chatId = supportAgent.supportAgentId
-  //   let fromChatId = supportAgent.userId
-  // } else {
-  //   let chatId = supportAgent.userId
-  //   let fromChatId = supportAgent.supportAgentId
-  // }
   let messageId = msg.message_id
   
   await bot.copyMessage(chatId, fromChatId, messageId)
-  // console.log(supportAgent)
-  // console.log(msg)
-  // console.log(`Message from ${msg.from.id}`)
-  // console.log(supportAgent)
 }
 
 const editMessage = async (bot, msg, supportAgent, fromUser) => {
@@ -144,7 +125,6 @@ const editMessage = async (bot, msg, supportAgent, fromUser) => {
       entities: entities
     })
   } else {
-    // console.log(msg)
     let media = await getMessageType(msg)
     await bot.editMessageMedia(media, {
       chat_id: chatId,

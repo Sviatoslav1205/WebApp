@@ -12,6 +12,14 @@
     margin: 0;
   }
 
+  .emptyMessage {
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 450;
+    color: #505050;
+  }
+
   .productsContainer {
     width: calc(85vw - 20px);
     background-color: #fff;
@@ -21,6 +29,22 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
+  }
+
+  .buttonContainer {
+    margin-top: 15px;
+    position: relative;
+
+    .basketError {
+      color: red;
+      font-size: 14px;
+      position: absolute;
+      top: 40px;
+      text-align: center;
+      width: 100%;
+      font-weight: 500;
+    }
+
   }
 }
 

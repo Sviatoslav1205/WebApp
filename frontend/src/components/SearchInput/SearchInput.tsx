@@ -12,7 +12,7 @@ const SearchInput: FC<SearchInputProps> = ({ value, onValueChange }) => {
   return (
     <div className={styles.searchInputContainer}>
       <TextInput theme="red" size="relative" isFocusEnabled={false} inputType="singleLine" 
-        placeholder="Пошук по сайту" value={value} inputMode="search" onValueChange={onValueChange} 
+        placeholder="Пошук страв" value={value} inputMode="search" onValueChange={onValueChange} 
       />
       <img src={searchIcon} alt="" />
     </div>

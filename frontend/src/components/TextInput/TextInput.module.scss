@@ -89,4 +89,9 @@
   font-size: 12px;
   position: absolute;
   top: -15px;
+
+  &.whiteLabel {
+    top: -17px;
+    color: #ffffff;
+  }
 }
