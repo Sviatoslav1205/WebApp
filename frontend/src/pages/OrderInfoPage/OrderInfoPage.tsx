@@ -4,7 +4,6 @@ import { observer } from "mobx-react-lite"
 import { Order } from "@/types/Order"
 import OrdersService from "@/services/Orders.service"
 import TextContainer from "@/components/TextContainer"
-import SearchInput from "@/components/SearchInput"
 import TextInput from "@/components/TextInput"
 import OrderCard from "@/components/OrderCard"
 import BackButton from "@/components/BackButton"
@@ -106,10 +105,10 @@ const OrderInfoPage: FC = () => {
           <OrderCard order={orderInfo} />
         </div>
 
-        <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.userId} onValueChange={() => {}} readonly={true} border={true} label="ID користувача" />
-        <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.recipientName} onValueChange={() => {}} readonly={true} border={true} label="Імʼя користувача" />
-        <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.phoneNumber} onValueChange={() => {}} readonly={true} border={true} label="Номер телефону" />
-        <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.address} onValueChange={() => {}} readonly={true} border={true} label="Адреса" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={orderInfo.userId} onValueChange={() => {}} readonly={true} border={true} label="ID користувача" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={orderInfo.recipientName} onValueChange={() => {}} readonly={true} border={true} label="Імʼя користувача" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={orderInfo.phoneNumber} onValueChange={() => {}} readonly={true} border={true} label="Номер телефону" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={orderInfo.address} onValueChange={() => {}} readonly={true} border={true} label="Адреса" />
         
         <div style={{position: 'relative', margin: 'auto'}}>
           <span className={styles.label}>Статус замовлення</span>
@@ -166,10 +165,10 @@ const OrderInfoPage: FC = () => {
           />
         </div>
 
-        <TextInput theme="white" size="big" inputType="singleLine" value={`${new Date(orderInfo.orderDate).toLocaleString()}`} onValueChange={() => {}} readonly={true} border={true} label="Дата замовлення" />
-        <TextInput theme="white" size="big" inputType="singleLine" value={`${orderInfo.totalPrice}.00 грн`} onValueChange={() => {}} readonly={true} border={true} label="Загальна ціна" />
-        <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.deliveryType} onValueChange={() => {}} readonly={true} border={true} label="Тип доставки" />
-        <TextInput theme="white" size="big" inputType="singleLine" value={`${orderInfo.shippingCost}.00 грн`} onValueChange={() => {}} readonly={true} border={true} label="Вартість доставки" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={`${new Date(orderInfo.orderDate).toLocaleString()}`} onValueChange={() => {}} readonly={true} border={true} label="Дата замовлення" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={`${orderInfo.totalPrice}.00 грн`} onValueChange={() => {}} readonly={true} border={true} label="Загальна ціна" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={orderInfo.deliveryType} onValueChange={() => {}} readonly={true} border={true} label="Тип доставки" />
+        <TextInput theme="white" labelTheme="white" size="big" inputType="singleLine" value={`${orderInfo.shippingCost}.00 грн`} onValueChange={() => {}} readonly={true} border={true} label="Вартість доставки" />
         
         <div className={styles.ordersContainer}>
           <span className={styles.label}>Cписок товарів</span>

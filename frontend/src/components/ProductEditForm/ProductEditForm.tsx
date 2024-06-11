@@ -11,8 +11,6 @@ import Select, { OnChangeValue } from "react-select"
 import { SelectOption } from "@/types/SelectOption"
 import { observer } from "mobx-react-lite"
 import _ from "lodash"
-import ModalContainer from "@/components/ModalContainer"
-import ConfirmationModal from "@/components/ConfirmationModal"
 
 interface ProductEditFormProps {
   product?: ProductData

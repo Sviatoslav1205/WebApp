@@ -42,7 +42,7 @@ const UsersTable: FC<UsersTableProps> = ({ searchId, setError, setSelectedUser, 
         <thead>
           <tr className={styles.tr}>
             <th>ID користувача</th>
-            <th>Дата народження</th>
+            {/* <th>Дата народження</th> */}
             <th>Роль</th>
             <th colSpan={2}>Операції</th>
           </tr>
@@ -52,9 +52,9 @@ const UsersTable: FC<UsersTableProps> = ({ searchId, setError, setSelectedUser, 
             return (
               <tr className={styles.tr} key={index}>
                 <td>{user.userId}</td>
-                <td style={{ textAlign: "center" }}>
+                {/* <td style={{ textAlign: "center" }}>
                   {user.dateOfBirth ? new Date(user.dateOfBirth).toLocaleDateString() : "––"}
-                </td>
+                </td> */}
                 <td>{user.role}</td>
                 <td className={styles.operation} onClick={() => {
                   if (user.userId === store.userId) {
@@ -72,7 +72,8 @@ const UsersTable: FC<UsersTableProps> = ({ searchId, setError, setSelectedUser, 
             )
           }) : 
           <tr className={styles.tr}>
-            <td colSpan={5}>Користувача з таким ID не знайдено!</td>
+            {/* <td colSpan={5}>Користувача з таким ID не знайдено!</td> */}
+            <td colSpan={4}>Користувача з таким ID не знайдено!</td>
           </tr>
           }
         </tbody>

@@ -4,7 +4,6 @@ import { observer } from "mobx-react-lite"
 import { Order } from "@/types/Order"
 import OrdersService from "@/services/Orders.service"
 import TextContainer from "@/components/TextContainer"
-import SearchInput from "@/components/SearchInput"
 import TextInput from "@/components/TextInput"
 import OrderCard from "@/components/OrderCard"
 import { useNavigate } from "react-router-dom"
@@ -13,14 +12,7 @@ const OrdersPage: FC = () => {
   const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState<string>('')
   // const [ordersGroupDate, setOrdersGroupDate] = useState<string>('')
-  let ordersGroupDate = ''
-  const [dates, setDates] = useState<{
-    date: string
-    index: number
-    count: number
-  }[]>([])
   const [orders, setOrders] = useState<Order[]>([])
-  const [filteredOrders, setFilteredOrders] = useState<Order[]>([])
   const [groupedOrders, setGroupedOrders] = useState<{[key: string]: Order[]}>({})
   // const { productStore } = useContext(Context)
   // const [isFullscreenOpen, setIsFullscreenOpen] = useState<boolean>(false)
@@ -48,6 +40,7 @@ const OrdersPage: FC = () => {
       setOrders((await OrdersService.getOrders()).data.orders)
     }
     fetchOrders()
+    document.body.style.overflow = 'visible'
 
 
     // setOrders([

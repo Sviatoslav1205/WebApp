@@ -86,12 +86,6 @@ const MailingPage: FC = () => {
           }}/>
         {/* </div> */}
       </div>
-      
-
-      <div className={styles.buttonContainer}>
-        {/* <Button text="TEST" color="red" onButtonClick={() => console.log('btn click')}/> */}
-        
-      </div>
     </>
   )
 }

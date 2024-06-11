@@ -30,7 +30,7 @@ const startBot = async () => {
     })
   })
 
-  await bot.on('message', async (msg) => {
+  bot.on('message', async (msg) => {
     if (msg.from.is_bot) return
 
     const userId = msg.from.id
@@ -53,16 +53,16 @@ const startBot = async () => {
   // bot.on('web_app_data', async (data) => {
   //   await webAppDataEventListener(bot, data)
   // })
-  await bot.on('shipping_query', async (shippingQuery) => {
+  bot.on('shipping_query', async (shippingQuery) => {
     await shippingQueryEventListener(bot, shippingQuery)
   })
-  await bot.on('pre_checkout_query', async (preCheckoutQuery) => {
+  bot.on('pre_checkout_query', async (preCheckoutQuery) => {
     await preCheckoutQueryEventListener(bot, preCheckoutQuery)
   })
-  await bot.on('successful_payment', async (msg) => {
+  bot.on('successful_payment', async (msg) => {
     await successfulPaymentEventListener(bot, msg)
   })
-  await bot.on('callback_query', async (msg) => {
+  bot.on('callback_query', async (msg) => {
     if (msg.data === "endSupportSession") {
       return
     }

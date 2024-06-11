@@ -19,7 +19,21 @@ const adminNavItems: NavItem[] = [
   }
 ]
 
-const navItems: NavItem[] = [
+const supportNavItems: NavItem[] = [
+  {
+    title: 'Замовлення',
+    path: '/orders'
+  }
+]
+
+const managerNavItems: NavItem[] = [
+  {
+    title: 'Замовлення',
+    path: '/orders'
+  }
+]
+
+const userNavItems: NavItem[] = [
   {
     title: 'Головна',
     path: '/'
@@ -28,5 +42,7 @@ const navItems: NavItem[] = [
 
 export {
   adminNavItems,
-  navItems
+  supportNavItems,
+  managerNavItems,
+  userNavItems
 }

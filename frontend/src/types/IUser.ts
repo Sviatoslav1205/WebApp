@@ -1,5 +1,5 @@
 export interface IUser {
   userId: number
-  dateOfBirth: Date
+  // dateOfBirth: Date
   role: string
 }

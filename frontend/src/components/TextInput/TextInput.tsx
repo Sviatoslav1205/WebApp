@@ -7,6 +7,7 @@ interface TextInputProps {
   error?: CustomError
   label?: string
   theme: "red" | "white"
+  labelTheme?: "white" | null
   size: "small" | "big" | "relative"
   isFocusEnabled?: boolean
   inputType: "singleLine" | "multiLine"
@@ -20,7 +21,7 @@ interface TextInputProps {
   onValueChange: (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void
 }
 
-const TextInput: FC<TextInputProps> = ({ border, error, label, theme, size, isFocusEnabled, inputType, type="text", maxLength, placeholder, value, style, readonly, inputMode, onValueChange }) => {
+const TextInput: FC<TextInputProps> = ({ border, error, label, labelTheme, theme, size, isFocusEnabled, inputType, type="text", maxLength, placeholder, value, style, readonly, inputMode, onValueChange }) => {
 
   const className = `${styles.input} 
     ${size === "big" ? styles.big : size === "small" ? styles.small : size === "relative" ? styles.relative : null}
@@ -35,7 +36,7 @@ const TextInput: FC<TextInputProps> = ({ border, error, label, theme, size, isFo
           {error?.show ? 
             <span className={styles.errorMessage}>{error.message}</span> 
             : 
-            <span className={`${styles.label} ${theme === "white" ? styles.whiteLabel : null}`}>{label}</span>
+            <span className={`${styles.label} ${labelTheme === "white" ? styles.whiteLabel : null}`}>{label}</span>
           }
           <input type={type} placeholder={placeholder} inputMode={inputMode} maxLength={maxLength} value={value} onChange={onValueChange} 
             className={className} style={{...style}} readOnly={readonly}
@@ -50,7 +51,7 @@ const TextInput: FC<TextInputProps> = ({ border, error, label, theme, size, isFo
           {error?.show ? 
             <span className={styles.errorMessage}>{error.message}</span> 
             : 
-            <span className={`${styles.label} ${theme === "white" ? styles.whiteLabel : null}`}>{label}</span>
+            <span className={`${styles.label} ${labelTheme === "white" ? styles.whiteLabel : null}`}>{label}</span>
           }
           <textarea placeholder={placeholder} inputMode={inputMode} maxLength={maxLength} value={value} onChange={onValueChange} 
             className={className}

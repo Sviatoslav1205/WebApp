@@ -9,7 +9,7 @@ const userRolesList = require('../static/userRolesList')
 const PHOTOS_DIR = path.join(process.cwd(), 'public/images')
 
 const getUsers = async () => {
-  const [result] = await pool.query('SELECT `user_id`, `date_of_birth`, `role` FROM `Users`')
+  const [result] = await pool.query('SELECT `user_id`, `role` FROM `Users`')
   result.forEach((user, index) => {
     result[index] = new UserDto(user)
   })

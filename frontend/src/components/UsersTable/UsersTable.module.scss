@@ -19,10 +19,11 @@
     padding: 15px 15px;
     background-color: $table_header_color;
     border: 1px solid $table_cell_border_color;
+    min-width: 60px;
   }
   
   td {
-    // width: 100px;
+    min-width: 60px;
     padding: 7px 10px;
     white-space: nowrap;
     background-color: $table_cell_color;
