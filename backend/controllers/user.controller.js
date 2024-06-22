@@ -1,5 +1,4 @@
 const userService = require('../services/user.service')
-const tokenService = require('../services/token.service')
 
 const login = async (req, res, next) => {
   try {
@@ -36,14 +35,9 @@ const refresh = async (req, res, next) => {
 
 const createInvoice = async (req, res, next) => {
   try {
-    let { title, description, payload, prices, photoUrl } = req.body
-    await userService.createInvoice(
-      title= "title", 
-      description= "description", 
-      payload= "payload", 
-      prices= [{label: "prices", amount: 2}], 
-      photoUrl= "photoUrl"
-    )
+    const { prices, payload } = req.body
+    const invoiceUrl = await userService.createInvoice(prices, payload)
+    return res.json({invoiceUrl: invoiceUrl})
   } catch (e) {
     next(e)
   }

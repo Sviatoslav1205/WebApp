@@ -28,16 +28,6 @@ const options = {
 
 const PORT = process.env.SERVER_PORT || 2000
 
-// app.use(function(req, res, next) {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Methods', 'GET, PUT, DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested_With,content-type');
-//     res.setHeader('Access-Control-Allow-Credentials', true);
-//     next();
-// });
-
-// require('./routes')(app)
-
 https.createServer(options, app).listen(PORT, () => {
     console.log('Express server working on port: ', PORT)
 })

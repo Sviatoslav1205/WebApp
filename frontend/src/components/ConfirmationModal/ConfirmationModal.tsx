@@ -1,7 +1,5 @@
 import { FC } from "react"
 import styles from "./ConfirmationModal.module.scss"
-// import ErrorIcon from "@/images/errorModal/ErrorIcon.svg"
-// import OkButton from "@/components/OkButton"
 import CloseButton from "@/components/CloseButton"
 
 interface ConfirmationModalProps {

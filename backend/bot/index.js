@@ -2,22 +2,28 @@ const { USER_COMMANDS } = require('./commands')
 const helpHandler = require('./commandHandlers/help.handler')
 const startHandler = require('./commandHandlers/start.handler')
 const supportHandler = require('./commandHandlers/support.handler')
-const webAppDataHandler = require('./eventListeners/webAppData.eventListener')
+const shippingQueryEventListener = require('./eventListeners/shippingQuery.eventListener')
+const successfulPaymentEventListener = require('./eventListeners/successfulPayment.eventListener')
+const deliveryService = require('./botServices/delivery.service')
 
 const TelegramApi = require('node-telegram-bot-api')
+const preCheckoutQueryEventListener = require('./eventListeners/preCheckoutQuery.eventListener')
 const BOT_TOKEN = process.env.BOT_TOKEN
 const bot = new TelegramApi(BOT_TOKEN, {polling: true})
 
-const startBot = () => {
+const startBot = async () => {
+  const messagesId = {
+    courierMessageId: 0,
+    recipientMessageId: 0
+  }
 
-  bot.setMyCommands(USER_COMMANDS)
+  await bot.setMyCommands(USER_COMMANDS)
 
-  bot.setChatMenuButton({
+  await bot.setChatMenuButton({
     menu_button: JSON.stringify({
       type: 'web_app',
       text: 'Сайт',
-      // web_app: {url: 'https://192.0.0.2:5173'} // Телефон
-      web_app: {url: 'https://192.168.0.102:5173'} //Вайфай вдома
+      web_app: {url: 'https://192.168.0.102:5173'}
     })
   })
 
@@ -33,11 +39,39 @@ const startBot = () => {
       await helpHandler(bot, userId)
     } else if (text === '/support') {
       await supportHandler(bot, msg, userId)
+    } else if (text === '/user_id') {
+      await bot.sendMessage(msg.chat.id, `Ваше ID – <code>${userId}</code>\n` +
+      `Для того, щоб скопіювати ID, натисніть на нього.`, {
+        parse_mode: 'HTML'
+      })
     }
     
   })
-  bot.on('web_app_data', async (data) => {
-    await webAppDataHandler(bot, data)
+  bot.on('shipping_query', async (shippingQuery) => {
+    await shippingQueryEventListener(bot, shippingQuery)
+  })
+  bot.on('pre_checkout_query', async (preCheckoutQuery) => {
+    await preCheckoutQueryEventListener(bot, preCheckoutQuery)
+  })
+  bot.on('successful_payment', async (msg) => {
+    await successfulPaymentEventListener(bot, msg)
+  })
+  bot.on('callback_query', async (msg) => {
+    if (msg.data === "endSupportSession") {
+      return
+    }
+    const callbackData = JSON.parse(msg.data)
+    if (callbackData.action === "takeOrder") {
+      const result = await deliveryService.takeOrder(bot, callbackData.orderId, msg.from.id, callbackData.msgId)
+      messagesId.courierMessageId = result.courierMessageId
+      messagesId.recipientMessageId = result.recipientMessageId
+    } else if (callbackData.action === "deliveredOrder") {
+      const result = await deliveryService.deliveredOrder(bot, callbackData.orderId, callbackData.userId, msg.from.id, messagesId)
+      messagesId.courierMessageId = result.courierMessageId
+      messagesId.recipientMessageId = result.recipientMessageId
+    } else if (callbackData.action === "confirmDeliver") {
+      await deliveryService.confirmDeliver(bot, callbackData.orderId, msg.from.id, callbackData.courierId, messagesId)
+    }
   })
 }
 

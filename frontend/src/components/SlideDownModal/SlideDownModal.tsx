@@ -31,7 +31,6 @@ const SlideDownModal: FC<SlideDownModalProps> = ({ isProductModal, isFullscreenO
     const target = (e.target as HTMLDivElement)
     const scrollHeight = target.scrollHeight
     const windowHeight = window.innerHeight
-    // console.log(scrollHeight, window.innerHeight)
     if (scrollHeight > windowHeight) {
       const scrollTop = target.scrollTop
       if (isScrollingDown(scrollTop) && scrollTop > 20) {

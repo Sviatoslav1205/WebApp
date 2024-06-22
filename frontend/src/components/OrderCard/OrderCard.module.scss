@@ -1,0 +1,66 @@
+@use '@/variables' as *;
+
+.container {
+  width: 90vw;
+  box-sizing: border-box;
+
+  &.clickable {
+    cursor: pointer;
+  }
+
+  padding: 5px;
+  border-radius: 15px;
+  border: 2px solid #CCCCCC;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+  
+  .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    gap: 15px;
+
+    .id {
+      width: 100px;
+      font-weight: 600;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .hr {
+      height: 80%;
+      border: 1px solid #8D8D8D;
+      border-radius: 50px;
+    }
+
+    .phoneNumber {
+      width: 100%;
+      font-weight: 500;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .orderStatus {
+      line-height: 10px;
+      font-size: 20px;
+      height: 10px;
+      font-weight: 500;
+    }
+
+    .price {
+      font-size: 18px;
+    }
+  }
+
+  .rowSplit {
+    width: 95%;
+    border: 1px solid #8D8D8D;
+    border-radius: 50px;
+    margin: 0;
+  }
+}

@@ -18,24 +18,9 @@ const ImageInput: FC<ImageInputProps> = ({ theme, size, error, image, onSelect, 
   const containerRef = useRef<HTMLDivElement>(null)
   const truncateFileName = (fileName: string, n: number) => {
     if (fileName.length <= n) { return fileName }
-    // const subStringFileName = fileName.slice(0, n-1).split('.').slice(0, -1).join('.')
     const subStringFileName = fileName.slice(0, n-1)
     return subStringFileName + '... .' + fileName.split('.').slice(-1)
   }
-  // if (inputType === "singleLine") {
-  //   return (
-  //     <input type="text" placeholder={placeholder} inputMode={inputMode} maxLength={maxLength} value={value} onChange={onValueChange} 
-  //       className={`${styles.input} ${theme === "red" ? styles.red : theme === "white" ? styles.white : null}`}
-  //     />
-  //   )
-  // } else if (inputType === "multiLine") {
-  //   return (
-  //     <textarea placeholder={placeholder} inputMode={inputMode} maxLength={maxLength} value={value} onChange={onValueChange} 
-  //       className={`${styles.input} ${theme === "red" ? styles.red : theme === "white" ? styles.white : null}`}
-  //       cols={30} rows={9}
-  //     />
-  //   )
-  // } else return null
   return (
     <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
       <div className={`${styles.container} ${size === "huge" ? styles.huge : size === "big" ? styles.big : size === "small" ? styles.small : null}
@@ -65,6 +50,9 @@ const ImageInput: FC<ImageInputProps> = ({ theme, size, error, image, onSelect, 
             }}>Завантажити</button>
             <button className={styles.button} onClick={(e) => {
               e.preventDefault()
+              if (inputRef.current) {
+                inputRef.current.value = ''
+              }
               onDelete()
             }}>Видалити</button>
           </div>

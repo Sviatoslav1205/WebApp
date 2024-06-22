@@ -8,13 +8,11 @@ const createMainSupportEventListener = async (bot, msg, userId, userMessage, sup
   
   const supportMessageListener = async (msg) => {
     let isCommand = false
-    // let myCommands = await bot.getMyCommands()
     let myCommands = await bot.getMyCommands({
       scope: {
         type: "chat",
         chat_id: msg.from.id
     }})
-    // console.log(myCommands)
     myCommands.forEach(command => {
       if (`/${command.command}` === msg.text) {
         isCommand = true
@@ -31,7 +29,6 @@ const createMainSupportEventListener = async (bot, msg, userId, userMessage, sup
   }
 
   const supportEditMessageListener = async (msg) => {
-    // console.log(msg)
     if (msg.from.id === supportAgentId) {
       await support.editMessage(bot, msg, supportAgent, false)
     } else if (msg.from.id === userId) {

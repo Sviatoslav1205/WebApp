@@ -12,7 +12,6 @@ const ModalContainer: FC<ModalContainerProps> = ({ showModal, onClose, children,
   if (blockScroll) {
     document.body.style.overflow = showModal ? 'hidden' : 'visible'
   }
-  // document.body.style.overflow = showModal ? 'hidden' : 'visible'
 
   return showModal ? (
     <div className={styles.container}>

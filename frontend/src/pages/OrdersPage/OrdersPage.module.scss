@@ -1,0 +1,26 @@
+@use '@/variables' as *;
+
+.headContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.date {
+  text-align: center;
+  margin: 20px 0 10px;
+  color: #D6D6D6;
+}
+
+.ordersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .groupedOrders {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

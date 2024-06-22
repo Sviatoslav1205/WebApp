@@ -1,6 +1,5 @@
 const translit = require('../services/translit.service')
 const adminController = require('../controllers/admin.controller')
-const userRoleMiddleware = require('../middlewares/userRole.middleware')
 const router = require('express').Router()
 const multer  = require('multer')
 const mailingStorage = multer.memoryStorage()

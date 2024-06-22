@@ -9,7 +9,6 @@ const getUsers = async (): Promise<AxiosResponse<GetUsersResponse>> => {
 }
 
 const changeUserRole = async (adminId: number, userId: number, role: string | null): Promise<AxiosResponse> => {
-  // return await $api.put(`/admin/change-role/${userId}?adminId=${adminId}&newRole=${role || ''}`)
   return await $api.put(`/admin/change-role/${userId}`, {
     adminId: adminId, 
     newRole: role || ''

@@ -29,9 +29,6 @@ const MailingPage: FC = () => {
     <>
       <ModalContainer showModal={showConfirmationModal} blockScroll={true} onClose={() => setShowConfirmationModal(false)}>
         <ConfirmationModal onYes={async () => {
-          // await AdminService.generatePassword(selectedUser.userId).then(response => {
-          //   setShowPassword({message:response.data.message, password: response.data.password, showModal: true})
-          // })
           const formData = new FormData()
           formData.append("title", mail.title)
           mail.image && formData.append("image", mail.image)
@@ -43,10 +40,7 @@ const MailingPage: FC = () => {
         }} onNo={() => setShowConfirmationModal(false)}/>
       </ModalContainer>
 
-      
-
       <div className={styles.form}>
-        {/* <div className={styles.formContainer}> */}
           <TextInput theme="red" size="big" inputType="singleLine" placeholder="Заголовок" inputMode="text" value={mail.title} onValueChange={(e) => {
             setMail((prevState) => {
               return {
@@ -84,13 +78,6 @@ const MailingPage: FC = () => {
               setShowConfirmationModal(true)
             }
           }}/>
-        {/* </div> */}
-      </div>
-      
-
-      <div className={styles.buttonContainer}>
-        {/* <Button text="TEST" color="red" onButtonClick={() => console.log('btn click')}/> */}
-        
       </div>
     </>
   )

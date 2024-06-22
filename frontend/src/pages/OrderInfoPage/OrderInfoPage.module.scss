@@ -1,0 +1,48 @@
+@use '@/variables' as *;
+
+.headContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .block {
+    width: 75vw;
+    display: flex;
+    gap: 10px;
+  }
+}
+
+.container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .cardContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .label {
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    top: -17px;
+    color: #ffffff;
+  }
+  
+  .ordersContainer {
+    position: relative;
+    width: 85vw;
+    margin: auto;
+    border-radius: 4px;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 5px;
+  }
+}

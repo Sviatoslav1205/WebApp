@@ -1,15 +1,19 @@
 const USER_COMMANDS = [
   {
     command: "start",
-    description: "restart bot"
+    description: "Перезапустити бота"
   },
   {
     command: "help",
-    description: "help command"
+    description: "Команда допомоги"
   },
   {
     command: "support",
-    description: "contact with support"
+    description: "Зʼєднатись з менеджером техпідтримки"
+  },
+  {
+    command: "user_id",
+    description: "Дізнатися власне ID користувача"
   }
 ]
 
@@ -17,17 +21,13 @@ const SUPPORT_COMMANDS = [
   ...USER_COMMANDS,
   {
     command: "start_workday",
-    description: "start workday"
+    description: "Розпочати робочий день"
   },
   {
     command: "end_workday",
-    description: "end workday"
+    description: "Завершити робочий день"
   }
 ]
-
-
-// для support зробити команди початку роботи та завершення
-// isAvailable буде ставати true або false
 
 module.exports = {
   USER_COMMANDS,

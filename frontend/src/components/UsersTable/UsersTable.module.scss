@@ -6,7 +6,6 @@
   border: 1px solid $table_border_color;
   display: block;
   background-color: $table_bg_color;
-  // width: 100vw;
   overflow-x: auto;
   overflow-y: auto;
   max-height: 350px;
@@ -19,10 +18,11 @@
     padding: 15px 15px;
     background-color: $table_header_color;
     border: 1px solid $table_cell_border_color;
+    min-width: 60px;
   }
   
   td {
-    // width: 100px;
+    min-width: 60px;
     padding: 7px 10px;
     white-space: nowrap;
     background-color: $table_cell_color;

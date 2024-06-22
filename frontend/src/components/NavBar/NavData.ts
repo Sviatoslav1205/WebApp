@@ -1,10 +1,6 @@
 import { NavItem } from "@/types/NavItem"
 
 const adminNavItems: NavItem[] = [
-  // {
-  //   title: 'Панель адміністрування',
-  //   path: '/admin'
-  // }
   {
     title: 'Розсилка',
     path: '/admin/mailing'
@@ -19,26 +15,34 @@ const adminNavItems: NavItem[] = [
   },
   {
     title: 'Замовлення',
-    path: '/admin'
+    path: '/orders'
   }
 ]
 
-const navItems: NavItem[] = [
+const supportNavItems: NavItem[] = [
+  {
+    title: 'Замовлення',
+    path: '/orders'
+  }
+]
+
+const managerNavItems: NavItem[] = [
+  {
+    title: 'Замовлення',
+    path: '/orders'
+  }
+]
+
+const userNavItems: NavItem[] = [
   {
     title: 'Головна',
     path: '/'
-  },
-  {
-    title: 'Second',
-    path: '/'
-  },
-  {
-    title: 'Third',
-    path: '/'
-  },
+  }
 ]
 
 export {
   adminNavItems,
-  navItems
+  supportNavItems,
+  managerNavItems,
+  userNavItems
 }

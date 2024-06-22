@@ -1,5 +1,4 @@
-const ApiError = require('../exceptions/api.error')
-const menuService = require('../services/menu.sevice')
+const menuService = require('../services/menu.service')
 
 const getCategories = async (req, res, next) => {
   try {
