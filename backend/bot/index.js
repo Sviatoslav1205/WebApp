@@ -2,7 +2,6 @@ const { USER_COMMANDS } = require('./commands')
 const helpHandler = require('./commandHandlers/help.handler')
 const startHandler = require('./commandHandlers/start.handler')
 const supportHandler = require('./commandHandlers/support.handler')
-const webAppDataEventListener = require('./eventListeners/webAppData.eventListener')
 const shippingQueryEventListener = require('./eventListeners/shippingQuery.eventListener')
 const successfulPaymentEventListener = require('./eventListeners/successfulPayment.eventListener')
 const deliveryService = require('./botServices/delivery.service')
@@ -18,9 +17,7 @@ const startBot = async () => {
     recipientMessageId: 0
   }
 
-  // await bot.setMyCommands([])
   await bot.setMyCommands(USER_COMMANDS)
-  // bot.sendMessage(703081097, "fdfsggsfhb")
 
   await bot.setChatMenuButton({
     menu_button: JSON.stringify({
@@ -50,9 +47,6 @@ const startBot = async () => {
     }
     
   })
-  // bot.on('web_app_data', async (data) => {
-  //   await webAppDataEventListener(bot, data)
-  // })
   bot.on('shipping_query', async (shippingQuery) => {
     await shippingQueryEventListener(bot, shippingQuery)
   })

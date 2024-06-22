@@ -1,8 +1,5 @@
 import { FC, useState } from "react"
 import styles from "./PasswordModal.module.scss"
-// import ErrorIcon from "@/images/errorModal/ErrorIcon.svg"
-// import OkButton from "@/components/OkButton"
-import CloseButton from "@/components/CloseButton"
 import OkButton from "@/components/OkButton"
 
 interface GeneratedPassword {
@@ -21,8 +18,6 @@ const PasswordModal: FC<PasswordModalProps> = ({ generatedPassword, onOk }) => {
 
   return (
     <div className={styles.container} onClick={() => setShowCopiedTooltip(false)}>
-      {/* setShowCopiedTooltip(false) */}
-      {/* <CloseButton onButtonClick={onClose}/> */}
       {generatedPassword.message}
       <div className={styles.password} onClick={(e) => {
         e.stopPropagation()
@@ -36,10 +31,6 @@ const PasswordModal: FC<PasswordModalProps> = ({ generatedPassword, onOk }) => {
         {generatedPassword.password}
       </div>
       <OkButton onButtonClick={onOk}/>
-      <div className={styles.buttons}>
-        {/* <button className={`${styles.button} ${styles.yes}`} onClick={onYes}>Так</button> */}
-        {/* <button className={`${styles.button} ${styles.no}`} onClick={onNo}>Ні</button> */}
-      </div>
     </div>
   )
 }

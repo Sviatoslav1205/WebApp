@@ -9,7 +9,6 @@ interface BasketProductCardProps {
   onAdd: () => void
   onRemove: () => void
   onDelete: () => void
-  // onCardClick: () => void
 }
 
 const BasketProductCard: FC<BasketProductCardProps> = ({ product, count, onAdd, onRemove, onDelete }) => {
@@ -35,24 +34,8 @@ const BasketProductCard: FC<BasketProductCardProps> = ({ product, count, onAdd, 
           x{count}
         </p>
         <button className={styles.button} onClick={onAdd}>+</button>
-        
-        {/* <div className={styles.block}>
-        </div> */}
       </div>
       <img src={DeleteIcon} className={styles.deleteButton} onClick={onDelete} alt="" />
-      
-      {/* Test */}
-      {/* 
-      <div className={styles.body}>
-        <p className={styles.title}>{product.name}</p>
-        <div className={styles.info}>
-          <p className={styles.description}>{product.description}</p>
-          <div className={styles.bottomBlocks}>
-            <div className={styles.weight}>{product.weight} г.</div>
-            <div className={styles.price}>{product.price} грн.</div>
-          </div>
-        </div>
-      </div> */}
     </div>
   )
 }

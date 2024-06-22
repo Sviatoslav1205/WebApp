@@ -75,10 +75,8 @@ const createInvoice = async (prices, payload) => {
       title = "Оплата замовлення", 
       description = "Будь ласка, перевірте правильність складу замовлення та заповніть усі поля нижче", 
       payload = payload, 
-      // payload = new Date(), 
       provider_token = process.env.PAYMENT_TOKEN, 
       currency = 'UAH', 
-      // prices = [ { label: 'Макарон', amount: 200 }, { label: 'Картопля', amount: 15000 } ],
       prices = prices,
       {
         photo_url:'https://iili.io/JmY1gII.png',

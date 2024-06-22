@@ -10,7 +10,6 @@ import { CustomError } from "@/types/CustomError"
 import { AxiosError } from "axios"
 import { Context } from "@/main"
 import { observer } from "mobx-react-lite"
-// import , { StylesConfig } from 'react-select'
 
 interface CategoriesPageProps {
   next: () => void
@@ -26,13 +25,6 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ next }) => {
 
   const [options, setOptions] = useState<SelectOption[]>([])
   const getOptions = async () => {
-    // UserService.getCategories().then(response => console.log(response.data))
-    // setOptions(productStore.categories.map(category => {
-    //     return {
-    //       value: category.id+'',
-    //       label: category.name
-    //     }
-    //   }))
     UserService.getCategories().then(response => {
       setOptions(response.data.categories.map(category => {
         return {
@@ -80,7 +72,6 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ next }) => {
                 message: '',
                 show: false
               })
-              // setSelectedCategory(e)
               productStore.setSelectedCategory({
                 category: {
                   id: e?.value ? +e.value : 0,
@@ -94,7 +85,6 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ next }) => {
           :
           <TextInput error={error} border={true} theme='white' size='big' inputType='singleLine' value={productStore.selectedCategory.category.name}
             onValueChange={(e: any) => {
-              // setSelectedCategory(e.target)
               productStore.setSelectedCategory({
                 category: {
                   id: 0,
@@ -111,7 +101,6 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ next }) => {
         }
 
         <div className={styles.buttonsContainer}>
-          {/* <div className={styles.test} ref={ref}></div> */}
           <Button text={isSelect ? 'Додати нову' : 'Скасувати'} theme='red' size='small' onButtonClick={() => {
             productStore.setSelectedCategory({
               category: {
@@ -134,7 +123,6 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ next }) => {
             let errorOccurred = false
             if (!isSelect) {
               await AdminService.createCategory(productStore.selectedCategory.category.name)
-                // .then(response => console.log(response.data))
                 .then(response => productStore.setSelectedCategory({
                   category: response.data.category, 
                   next: productStore.selectedCategory.next
@@ -148,11 +136,9 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ next }) => {
                 })
             }
             if (!errorOccurred) {
-              // console.log("next")
               next()
             }
           }}/>
-          {/* <button onClick={next}>next</button> */}
         </div>
       </div>
     </>

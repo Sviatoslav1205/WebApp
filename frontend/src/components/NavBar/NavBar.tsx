@@ -27,22 +27,10 @@ const NavBar: FC<NavBarProps> = ({ showNavBar, setShowNavBar }) => {
       <div className={showNavBar ? `${styles.background} ${styles.active}` : styles.background} 
         onClick={() => setShowNavBar(false)}></div>
       <nav className={showNavBar ? `${styles.nav_menu} ${styles.active}` : styles.nav_menu}>
-        {/* <button>Login</button> */}
-        {/* <LoginButton />
-        <LoginButton /> */}
         <LoginButton setShowNavBar={setShowNavBar}/>
-        
-        {/* <button onClick={() => setShowNavBar(false)}>
-          <img src={BurgerButton} alt="Burger" className={styles.burger_button}/>
-        </button> */}
         <ul className={styles.nav_links}>
           {navItems.map((item, index) => {
             return (
-              // <li key={index} onClick={() => setShowNavBar(false)}>
-              //   <Link to={item.path}> 
-              //     {item.title}
-              //   </Link>
-              // </li>
               <li key={index} onClick={() => setShowNavBar(false)}>
                 <Link to={item.path}> 
                   <h2>

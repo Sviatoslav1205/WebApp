@@ -71,7 +71,6 @@ const OrderInfoPage: FC = () => {
       const orderData = (await OrdersService.getOrderData(orderId ? +orderId : 0)).data
       setOrderInfo(orderData.orderInfo)
       setEditedOrderStatus(orderData.orderInfo.orderStatus)
-      // setOrderProducts(orderData.orderProducts)
       setOrderProducts([...orderData.orderProducts.map(({product: {photo: value, ...rest}, count: count}) => ({product: {photo: IMAGES_URL+'/'+value, ...rest}, count: count}))])
     }
     fetchOrderInfo()
@@ -99,8 +98,6 @@ const OrderInfoPage: FC = () => {
         </div>
       </div>
       <div className={styles.container}>
-        {/* style={{width: "61.5vw", margin: "0"}} */}
-
         <div className={styles.cardContainer}>
           <OrderCard order={orderInfo} />
         </div>
@@ -113,26 +110,12 @@ const OrderInfoPage: FC = () => {
         <div style={{position: 'relative', margin: 'auto'}}>
           <span className={styles.label}>Статус замовлення</span>
           <Select 
-            // key={editedProduct.categoryId}
             placeholder='Статус замовлення'
             isClearable={false}
             isSearchable={false}
-            // defaultValue={[{value: product?.categoryId+'', label: productStore.categories[0].name}]}
             value={
-              // productStore.categories
-              //   .filter(category => (category.id) === (product?.categoryId))
-              //   .map(category => {
-              //     return {
-              //       value: category.id+'', 
-              //       label: category.name}
-              //     }
-              //   )
               orderStatusOptions.filter(({ value }) => value === editedOrderStatus)
             }
-            // defaultValue={() => {
-            //   const { id, name } = productStore.categories.filter(category => (category.id) === (product?.categoryId))[0]
-            //   return {value: id, label: name}
-            // }}
             options={orderStatusOptions}
             styles={{
               singleValue: (baseStyles, { data }) => {
@@ -175,15 +158,6 @@ const OrderInfoPage: FC = () => {
           {
             orderProducts.map(element => (
               <OrderInfoProductCard key={element.product.id} product={element.product} count={element.count}/>
-              // <div key={element.product.id}>
-
-              //   {/* <h2 className={styles.date}>{date}</h2>
-              //   <div className={styles.groupedOrders}>
-              //     {groupedOrders[date].map(order => (
-              //       <OrderCard order={order} key={order.id} />
-              //     ))}
-              //   </div> */}
-              // </div>
             ))
           }
         </div>
@@ -195,34 +169,6 @@ const OrderInfoPage: FC = () => {
             navigate('/orders')
           }
         }} />
-        
-        {/* <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.userId} onValueChange={() => {}} readonly={true} border={true} label="ID користувача" /> */}
-        {/* <TextInput theme="white" size="big" inputType="singleLine" value={orderInfo.userId} onValueChange={() => {}} readonly={true} border={true} label="ID користувача" /> */}
-        {/* <div className="">
-          {orderProducts.map(element => {
-            return (
-              <div className="">
-                {element.product.name}
-                <img src={element.product.photo} alt="" />
-              </div>
-            )
-          })}
-        </div> */}
-
-        {/* <div className={styles.ordersContainer}>
-          {
-            Object.keys(groupedOrders).map(date => (
-              <div key={date}>
-                <h2 className={styles.date}>{date}</h2>
-                <div className={styles.groupedOrders}>
-                  {groupedOrders[date].map(order => (
-                    <OrderCard order={order} key={order.id} />
-                  ))}
-                </div>
-              </div>
-            ))
-          }
-        </div> */}
       </div>
     </>
   )

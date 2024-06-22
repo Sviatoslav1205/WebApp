@@ -16,7 +16,6 @@ const ErrorModal: FC<ErrorModalProps> = ({ message, onOk }) => {
         {message}
       </div>
       <OkButton onButtonClick={onOk}/>
-      {/* <button onClick={onOk}>OK</button> */}
     </div>
   )
 }

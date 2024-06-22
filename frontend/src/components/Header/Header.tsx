@@ -5,12 +5,10 @@ import styles from "./Header.module.scss"
 import ModalContainer from "@/components/ModalContainer"
 import SlideDownModal from "@/components/SlideDownModal"
 import BasketModal from "@/components/BasketModal"
-// import BasketModal from "@/components/BasketModal"
 
 interface HeaderProps {
   showNavBar: boolean
   setShowNavBar: Dispatch<SetStateAction<boolean>>
-  // setShowBasket: Dispatch<SetStateAction<boolean>>
 }
 
 const Header: FC<HeaderProps> = ({ showNavBar, setShowNavBar }) => {
@@ -26,14 +24,8 @@ const Header: FC<HeaderProps> = ({ showNavBar, setShowNavBar }) => {
             setShowBasket(false)
           }, 300)
         }} >
-          {/* {document.body.style.setProperty('overflow', showBasket ? 'hidden' : 'visible', 'important')} */}
           <SlideDownModal isFullscreenOpen={isFullscreenOpen} setIsFullscreenOpen={setIsFullscreenOpen} isModalOpenAnimation={isModalOpenAnimation} setIsModalOpenAnimation={setIsModalOpenAnimation} >
-            <BasketModal setIsFullscreenOpen={setIsFullscreenOpen} onBack={() => {
-              setIsModalOpenAnimation(false)
-              setTimeout(() => {
-                setShowBasket(false)
-              }, 300)
-            }} />
+            <BasketModal setIsFullscreenOpen={setIsFullscreenOpen} />
           </SlideDownModal>
         </ModalContainer>
 

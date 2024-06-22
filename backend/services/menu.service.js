@@ -1,5 +1,4 @@
 const { pool } = require("../db/db")
-const ApiError = require("../exceptions/api.error")
 
 const getCategories = async () => {
   const [result] = await pool.query('SELECT * FROM `Product_categories`')

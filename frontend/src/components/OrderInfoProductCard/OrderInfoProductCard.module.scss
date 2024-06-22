@@ -1,19 +1,13 @@
 @use '@/variables' as *;
 
 .container {
-  // width: 85vw;
-  // margin: auto;
-  // // height: 300px;
-  // // overflow: hidden;
   border-radius: 14px;
   padding: 2px;
   border: 2px solid #cccccc;
   box-sizing: border-box;
-  // background-color: #fff;
   display: flex;
   align-items: center;
   gap: 5px;
-  // // flex-direction: column;
 
   .image {
     width: 70px;
@@ -21,7 +15,6 @@
     object-fit: cover;
     border: 2px solid black;
     border-radius: 10px;
-    // margin-right: 5px;
     box-sizing: border-box;
   }
 
@@ -34,7 +27,6 @@
     justify-content: center;
     gap: 5px;
 
-
     .title {
       height: 35px;
       width: 100px;
@@ -45,7 +37,6 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      
 
       .titleText {
         text-overflow: ellipsis;
@@ -55,6 +46,7 @@
         -webkit-line-clamp: 2;
       }
     }
+
     .price {
       display: flex;
       align-items: center;
@@ -96,64 +88,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .body {
-    height: 100%;
-    padding: 5px 10px 10px;
-    display: flex;
-    flex-direction: column;
-
-    .title {
-      font-weight: 600;
-      color: #1E1E1E;
-      font-size: 16px;
-      margin: 0 0 5px;
-      max-height: 40px;
-      text-overflow: ellipsis;
-      overflow: hidden;
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-    }
-
-    .info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-
-      .description {
-        line-height: 14px;
-        font-weight: 300;
-        font-size: 12px;
-        color: #616161;
-        margin: 0;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 5;
-      }
-
-      .bottomBlocks {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-
-        .weight {
-          font-size: 12px;
-          background-color: #ECECEC;
-          width: 60px;
-          height: 25px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 10px;
-        }
-
-        
-      }
-    }
   }
 }

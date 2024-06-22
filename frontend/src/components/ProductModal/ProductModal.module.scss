@@ -12,7 +12,6 @@
     width: 100vw;
     height: 30vh;
     object-fit: cover;
-    // background-color: red;
   }
 
  .body {
@@ -68,26 +67,10 @@
   }
  }
 
-
   .buttonsContainer {
     display: flex;
-    // flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5px;
   }
-}
-
-.errorMessage {
-  color: red;
-  font-size: 12px;
-  position: absolute;
-  top: -15px;
-}
-
-.label {
-  color: #515151;
-  font-size: 12px;
-  position: absolute;
-  top: -15px;
 }

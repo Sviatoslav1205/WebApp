@@ -6,6 +6,7 @@
   top: 40vh;
   transition: top .3s ease;
   height: 100vh;
+  
   &.open {
     top: 0;
   }

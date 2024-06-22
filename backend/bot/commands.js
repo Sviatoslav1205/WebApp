@@ -29,10 +29,6 @@ const SUPPORT_COMMANDS = [
   }
 ]
 
-
-// для support зробити команди початку роботи та завершення
-// isAvailable буде ставати true або false
-
 module.exports = {
   USER_COMMANDS,
   SUPPORT_COMMANDS

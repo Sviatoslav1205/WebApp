@@ -17,9 +17,6 @@ interface ChangeRoleModalProps {
 }
 
 const ChangeRoleModal: FC<ChangeRoleModalProps> = ({ adminId, user, onClose }) => {
-  // const [modalShow, setModalShow] = useState<boolean>(false)
-  // document.body.style.overflow = showModal ? 'hidden' : 'visible'
-
   const [selectedRole, setSelectedRole] = useState<string | null>(user.role)
   const [showConfirmationModal, setShowConfirmationModal] = useState<boolean>(false)
 
@@ -53,7 +50,6 @@ const ChangeRoleModal: FC<ChangeRoleModalProps> = ({ adminId, user, onClose }) =
     <>
       <ModalContainer showModal={showConfirmationModal} blockScroll={true} onClose={() => setShowConfirmationModal(false)}>
         <ConfirmationModal onYes={async () => {
-          // console.log("yes")
           await AdminService.changeUserRole(adminId, user.userId, selectedRole)
           setShowConfirmationModal(false)
           onClose()
@@ -75,7 +71,6 @@ const ChangeRoleModal: FC<ChangeRoleModalProps> = ({ adminId, user, onClose }) =
         />
 
         <OkButton onButtonClick={() => {
-          // console.log(user.role, selectedRole)
           if (user.role !== selectedRole) {
             setShowConfirmationModal(true)
           } else {

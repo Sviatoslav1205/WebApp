@@ -47,15 +47,10 @@
       background-color: $light_green_button_bg_color;
 
       &:hover {
-        // background-color: #44a67c;
-        // background-color: #50b98c;
         background-color: $light_green_button_hover_bg_color;
       }
       &:active {
         background-color: $light_green_button_active_bg_color;
-        // background-color: #4aa980;
-        // background-color: #63a98a;
-        // background-color: #3C936E;
       }
     }
 

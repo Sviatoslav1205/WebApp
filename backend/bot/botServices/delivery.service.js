@@ -4,7 +4,6 @@ const requestDelivery = async (bot, orderId) => {
   const [orderData] = await pool.query("SELECT `order_id`, `user_id`, `address` FROM `Orders` WHERE `order_id` = ?", [orderId])
   const address = orderData[0].address.split(",").slice(0, 3).join(",")
 
-  // bot.sendMessage(process.env.DELIVERY_GROUP_ID, `Надійшло нове замовлення на вулицю: ${address}`, takeOrderInlineKeyboard)
   const groupMessage = await bot.sendMessage(process.env.DELIVERY_GROUP_ID, `Надійшло нове замовлення на вулицю: ${address}`)
   bot.editMessageReplyMarkup({
     "inline_keyboard": [[{

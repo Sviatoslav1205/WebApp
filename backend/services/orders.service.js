@@ -1,5 +1,4 @@
 const { pool } = require("../db/db")
-const ApiError = require("../exceptions/api.error")
 
 const createOrder = async (userId, orderStatus, orderDate, products) => {
   await pool.query('INSERT INTO `Orders` (`user_id`, `order_status`, `order_date`, `total_price`) VALUES (?, ?, ?, ?)', 

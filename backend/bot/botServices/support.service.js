@@ -131,21 +131,6 @@ const editMessage = async (bot, msg, supportAgent, fromUser) => {
       message_id: messageId,
     })
   }
-  
-  /* 
-    текст -- перевіряти text
-    картинка -- перевіряти photo
-    відео -- перевіряти video
-    музика -- перевіряти audio
-    голосове повідомлення -- перевіряти voice
-    відео повідомлення -- перевіряти video_note
-    файл -- перевіряти document
-    розташування -- перевіряти location
-    контакт -- перевіряти contact
-    стікер -- перевірити sticker
-  */
-  // console.log(supportAgent)
-  // console.log(msg)
 }
 
 module.exports = {

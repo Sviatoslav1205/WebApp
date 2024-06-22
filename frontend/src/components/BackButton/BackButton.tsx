@@ -4,7 +4,6 @@ import styles from "./BackButton.module.scss"
 
 interface BackButtonProps {
   theme: 'grey' | 'red'
-  // size?: 'small' | 'big'
   style?: CSSProperties
   iconStyle?: CSSProperties
   onButtonClick: () => void

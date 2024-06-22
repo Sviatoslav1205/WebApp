@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useContext, useState } from "react"
+import { FC, useContext, useState } from "react"
 import UsersTable from "@/components/UsersTable/UsersTable"
 import ModalContainer from "@/components/ModalContainer"
 import ErrorModal from "@/components/ErrorModal"
@@ -8,11 +8,9 @@ import { Context } from "@/main"
 import ConfirmationModal from "@/components/ConfirmationModal"
 import PasswordModal from "@/components/PasswordModal"
 import AdminService from "@/services/Admin.service"
-import { GeneratePasswordResponse } from "@/types/responses/GeneratePasswordResponse"
 import Button from "@/components/Button"
 import styles from "./UsersPage.module.scss"
 import TextInput from "@/components/TextInput"
-import Select from "react-select"
 
 interface Error {
   showError: boolean
@@ -69,7 +67,6 @@ const UsersPage: FC = () => {
       />
 
       <div className={styles.buttonContainer}>
-        {/* <Button text="TEST" color="red" onButtonClick={() => console.log('btn click')}/> */}
         <Button text="Змінити власний пароль" theme="grey" size="big" onButtonClick={() => {
           setSelectedUser(store.user)
           setShowConfirmationModal(true)

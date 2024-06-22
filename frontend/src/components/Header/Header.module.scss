@@ -13,19 +13,11 @@
     z-index: 1000;
     position: sticky;
     cursor: pointer;
-    // transition: rotate 1s ease;
     transition: transform 1s ease;
-    // -webkit-transition: -webkit-transform 1s ease;
-    // -moz-transition: -moz-transform 1s ease;
+
     &.clicked {
-      // rotate: 90deg;
       transform: rotate(90deg);
-      // -webkit-transform: rotate(90deg);
-      // -moz-transform: rotate(90deg);
       transition: transform 1s ease;
-      // transition: rotate 1s ease;
-      // -webkit-transition: -webkit-transform 1s ease;
-      // -moz-transition: -moz-transform 1s ease;
     }
   }
 }
@@ -71,19 +63,6 @@
     position: sticky;
     cursor: pointer;
   }
-  // width: 50px;
-  // .burger_button {
-  //   background: none;
-  //   border: none;
-  //   z-index: 1000;
-  //   position: sticky;
-  //   cursor: pointer;
-  //   transition: transform 1s ease;
-  //   &.clicked {
-  //     transform: rotate(90deg);
-  //     transition: transform 1s;
-  //   }
-  // }
 }
 
 @keyframes rotate {

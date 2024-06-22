@@ -1,9 +1,7 @@
 import { Context } from "@/main"
-import UserService from "@/services/User.service"
 import { FC, useContext, useEffect, useRef, useState } from "react"
 import solohaImage from "@/images/solohaMainImage/solohaImage.png"
 import styles from "./MainPage.module.scss"
-import { Link } from "react-router-dom"
 import SearchInput from "@/components/SearchInput"
 import ProductCard from "@/components/ProductCard"
 import { ProductData } from "@/types/ProductData"
@@ -28,12 +26,8 @@ const MainPage: FC = () => {
     product: {} as ProductData,
     showModal: false
   })
-  const [isFullscreenOpen, setIsFullscreenOpen] = useState<boolean>(false)
+  const [, setIsFullscreenOpen] = useState<boolean>(false)
   const [isModalOpenAnimation, setIsModalOpenAnimation] = useState<boolean>(false)
-  // const [showProductModal, setShowProductModal] = useState<{
-  //   product: ProductData
-  //   show: boolean
-  // }>(false)
   const categoriesListRef = useRef<HTMLUListElement>(null)
 
   const setFade = () => {
@@ -78,16 +72,6 @@ const MainPage: FC = () => {
 
   return (
     <>
-      {/* <div className={styles.test}></div> */}
-      {/* <ModalContainer showModal={selectedProduct.showModal} onClose={() => setSelectedProduct({
-        product: {} as ProductData,
-        showModal: false
-      })} blockScroll={true}>
-        <SlideDownModal isModalOpenAnimation={}>
-
-        </SlideDownModal>
-      </ModalContainer> */}
-
       <ModalContainer showModal={selectedProduct.showModal} blockScroll={true} onClose={() => {
         setIsModalOpenAnimation(false)
         setTimeout(() => {
@@ -124,7 +108,6 @@ const MainPage: FC = () => {
           <div className={`${styles.categoryIndicator} ${selectedCategoryIndex === -1 ? styles.selectedIndicator : null}`}
             onClick={() => setSelectedCategoryIndex(-1)}
           ></div>
-          {/* <div className={styles.categoryIndicator}></div> */}
           {productStore.categories.map((category, index) => {
             return (
               <div className={`${styles.categoryIndicator} ${selectedCategoryIndex === index ? styles.selectedIndicator : null}`} key={category.id}
@@ -154,7 +137,6 @@ const MainPage: FC = () => {
               product: product,
               showModal: true
             })} key={product.id}/>
-            // <ProductCard product={product} onCardClick={() => {console.log(())}} key={product.id}/>
           )
         }) :
         productStore.getProductsByCategory(selectedCategory.id).map(product => {
@@ -163,15 +145,9 @@ const MainPage: FC = () => {
               product: product,
               showModal: true
             })} key={product.id}/>
-            // <ProductCard product={product} onCardClick={() => {console.log(())}} key={product.id}/>
           )
         })}
       </div>
-      {/* <div style={{background: 'red', height: '50px'}}></div> */}
-        {/* <Link to={'/login'}>
-          <button style={{background: '#3c3c3c', height:'50px', width:'150px'}}>Login</button>
-        </Link>
-        <Link to={'/admin/users'}></Link> */}
     </>
   )
 }

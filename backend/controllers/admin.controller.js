@@ -1,4 +1,3 @@
-const ApiError = require('../exceptions/api.error')
 const adminService = require('../services/admin.service')
 
 const getUsers = async (req, res, next) => {
@@ -103,8 +102,6 @@ const editProduct = async (req, res, next) => {
     const photoName = req.file ? req.file.filename : req.body.photo
     const { categoryId, name, price, weight, description } = req.body
     const oldPhotoPath = req.body.oldPhotoPath ? req.body.oldPhotoPath : null
-    // console.log(req.file)
-    // console.log(id, categoryId, name, photoName, oldPhotoPath, price, weight, description)
     const result = await adminService.editProduct(id, categoryId, name, photoName, oldPhotoPath, price, weight, description)
     res.json(result)
   } catch (e) {

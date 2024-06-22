@@ -3,11 +3,7 @@ const ordersService = require('../services/orders.service')
 const createOrder = async (req, res, next) => {
   try {
     const { userId, orderStatus, orderDate, products } = req.body
-    // const { userId, orderStatus, slug, products } = req.body
-    // console.log(userId, orderStatus, slug, products)
     ordersService.createOrder(userId, orderStatus, orderDate, products)
-    // ordersService.createOrder(userId, orderStatus, slug, products)
-    // return res.json(userData)
   } catch (e) {
     next(e)
   }
